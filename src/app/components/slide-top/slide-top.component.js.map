@@ -1,0 +1,1 @@
+{"version":3,"file":"slide-top.component.js","sourceRoot":"","sources":["slide-top.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA;;GAEG;AACH,qBAAgC,eAAe,CAAC,CAAA;AAUhD;IAAA;IAGA,CAAC;IARD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,WAAW;YACrB,WAAW,EAAE,0BAA0B;SAC1C,CAAC;;yBAAA;IAIF,wBAAC;AAAD,CAAC,AAHD,IAGC;AAHY,yBAAiB,oBAG7B,CAAA"}

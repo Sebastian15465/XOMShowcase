@@ -1,0 +1,52 @@
+<div *ngIf="product && showcase_artikelListenpreisValues" class="shop-item">
+
+    <div class="thumbnail">
+        <!-- product image(s) -->
+        <a class="shop-item-image" (click)="redirectToDetail()">
+            <picture-component *ngIf="showcase_artikelBildValues" [assetValues]="showcase_artikelBildValues"></picture-component>
+        </a>
+        <!-- /product image(s) -->
+
+        <!-- hover buttons -->
+        <div class="shop-option-over">
+            <!-- replace data-item-id width the real item ID - used by js/view/demo.shop.js -->
+            <a class="btn btn-default add-wishlist" href="#" data-item-id="1"
+               data-toggle="tooltip" title="" data-original-title="Add To Wishlist"><i
+                    class="fa fa-heart nopadding"></i></a>
+            <a class="btn btn-default add-compare" href="#" data-item-id="1"
+               data-toggle="tooltip" title="" data-original-title="Add To Compare"><i
+                    class="fa fa-bar-chart-o nopadding" data-toggle="tooltip"></i></a>
+            <a class="btn btn-default" href="shop-cart.html"><i
+                    class="fa fa-cart-plus size-20"></i></a>
+        </div>
+        <!-- /hover buttons -->
+
+        <!-- product more info -->
+        <div class="shop-item-info">
+            <span *ngIf="showcase_artikelIsNewValues" class="label label-success">NEW</span>
+            <span *ngIf="showcase_artikelIsOnSaleValues" class="label label-danger">SALE</span>
+        </div>
+        <!-- /product more info -->
+    </div>
+
+    <div class="shop-item-summary text-center">
+        <h2 *ngIf="!showcase_artikelKurztextValues || !showcase_artikelKurztextValues[0]">
+            {{product.name}} <br>Kein showcase_artikelkurztext - showvalue definiert
+        </h2>
+        <h2 *ngIf="showcase_artikelKurztextValues && showcase_artikelKurztextValues[0]">{{showcase_artikelKurztextValues[0]?.value['value']}}</h2>
+
+        <!-- rating -->
+        <div *ngIf="showcase_artikelRatingValues"  class="shop-item-rating-line">
+            <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
+        </div>
+        <!-- /rating -->
+
+        <!-- price -->
+        <div *ngIf="showcase_artikelListenpreisValues && showcase_artikelListenpreisValues[0]" class="shop-item-price" >
+            {{showcase_artikelListenpreisValues[0]?.value['value']}} €
+
+        </div>
+        <!-- /price -->
+    </div>
+
+</div>

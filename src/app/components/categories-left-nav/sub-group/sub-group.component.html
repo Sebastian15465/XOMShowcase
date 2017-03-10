@@ -1,0 +1,20 @@
+<ul class="myul" style="display: block;" *ngIf="productgroup">
+    <li>
+
+        <a  (click)="toggleSelect()">
+                            <span *ngIf="productgroup.productgroups.length > 0" class="size-11 text-muted pull-right">
+                                ({{productgroup.productgroups.length}})
+                            </span>
+
+            {{ productgroup.name}}
+
+
+        </a>
+        <div *ngIf="productgroup.productgroups && isSelected">
+            <categories-left-nav-sub-group
+                                           *ngFor="let productgroupItem of productgroup.productgroups"
+                                           [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
+        </div>
+    </li>
+
+</ul>

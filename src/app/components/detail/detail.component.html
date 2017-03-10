@@ -1,0 +1,19 @@
+
+<detail-header-component *ngIf="product" [product]="product"></detail-header-component>
+
+<div class="row">
+
+    <!-- IMAGE -->
+    <div class="col-lg-6 col-sm-6">
+
+       <detailPictures-component *ngIf="product" [product]="product"></detailPictures-component>
+    </div>
+    <!-- /IMAGE -->
+
+    <!-- ITEM DESC -->
+    <div class="col-lg-6 col-sm-6">
+        <detailInformation-component *ngIf="product" [product]="product"></detailInformation-component>
+    </div>
+    <!-- /ITEM DESC -->
+
+</div>

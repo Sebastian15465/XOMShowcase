@@ -1,0 +1,27 @@
+<div id="myModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="mySlides">
+            <div class="numbertext">1 / 4</div>
+            <img src="{{activePictureUrl}}" style="width:100%">
+        </div>
+
+        <a class="prev" (onclick)="plusSlides(-1)">&#10094;</a>
+        <a class="next" (onclick)="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <div class="row" style="background-color: #0b0b0b">
+            <div *ngFor="let item213 of pictureUrls" class="column">
+                <div class="col-xs-6 col-md-4">
+                    <img class="demo" [src]="item213+'&width=300&height=200'" 
+                         height="100" (onclick)="currentSlide(item)" (alt)=item>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

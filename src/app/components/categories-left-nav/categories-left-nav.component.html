@@ -1,0 +1,27 @@
+<div class="side-nav margin-bottom-60">
+
+    <div class="side-nav-head">
+        <button class="fa fa-bars"></button>
+        <h4>Klassifikationen</h4>
+    </div>
+
+    <ul class="list-group list-group-bordered list-group-noicon uppercase">
+        <li *ngFor="let classification of classifications" class="list-group-item">
+            <a [class.active]="classification === selectedClassification"
+               (click)="onSelect(classification)"
+               class="dropdown-toggle"
+               >{{classification.name}}</a>
+            <!-- toggle component -->
+            <div *ngIf="selectedClassification === classification">
+                <div *ngFor="let productgroupItem of selectedClassification.productgroups">
+                    <categories-left-nav-sub-group
+                            [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+
+</div>
+
+

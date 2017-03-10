@@ -1,0 +1,46 @@
+
+<!--
+IMAGE ZOOM
+
+data-mode="mouseover|grab|click|toggle"
+-->
+<figure>
+    <!--
+        zoom buttton
+
+        positions available:
+            .bottom-right
+            .bottom-left
+            .top-right
+            .top-left
+    -->
+
+    <!--
+        image
+
+        Extra: add .image-bw class to force black and white!
+    -->
+    <img  class="hover-shadow img-responsive" *ngIf="pictureUrls && activePictureUrl != './../assets/images/noimage_595.png'" [src]="activePictureUrl + '&width=1200&height=1500'" (click)="openModal(activePictureUrl)" width="1200"
+         height="1500" [alt]="'Picturetitle:' + activePictureUrl" style="display: inline-block;">
+    <img  class="hover-shadow img-responsive" *ngIf="pictureUrls && activePictureUrl == './../assets/images/noimage_595.png'" [src]="activePictureUrl" (click)="openModal(activePictureUrl)" width="1200"
+          height="1500" [alt]="'Picturetitle:' + activePictureUrl" style="display: inline-block;">
+    <!--<img *ngIf="pictureUrls" src="{{pictureUrls[0]}}&width=2000&height=2500" class="zoomImg"
+         style="position: absolute; top: -8.34568px; left: -556.031px; opacity: 0; border: none; max-width: none; max-height: none; display: block; width: 1000px; height: 1500px;">-->
+
+
+
+
+    <div id="myRow1" class="row">
+        <div *ngFor="let item of pictureUrls" class="column">
+            <img *ngIf="item != './../assets/images/noimage_595.png'" ngClass="custom-thumbnails" [src]="item + '&width=300&height=50'" (click)="setActivePicture(item)" class="hover-shadow img-responsive">
+            <img *ngIf="item == './../assets/images/noimage_595.png'" ngClass="custom-thumbnails" [src]="item" (click)="setActivePicture(item)" class="hover-shadow img-responsive">
+
+        </div>
+    </div>
+    <span *ngIf="showModal == true" class="close cursor" (click)="closeModal()">&times;</span>
+<Modal-component *ngIf="showModal == true" [pictureUrls]="pictureUrls" [withActivatedPictureUrl]="activePictureUrl">
+
+</Modal-component>
+
+
+</figure>
