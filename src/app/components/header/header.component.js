@@ -12,16 +12,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by sebastian.seelig on 15.02.2017.
  */
 var core_1 = require('@angular/core');
+var router_1 = require("@angular/router");
 var HeaderComponent = (function () {
-    function HeaderComponent() {
+    function HeaderComponent(router) {
+        this.router = router;
     }
+    HeaderComponent.prototype.goToSearch = function () {
+        var link = ['/search'];
+        this.router.navigate(link);
+    };
     HeaderComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'header-component',
             templateUrl: 'header.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], HeaderComponent);
     return HeaderComponent;
 }());

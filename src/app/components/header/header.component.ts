@@ -4,6 +4,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from "../../resttest.service";
 import {Product} from "../../Product";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,5 +14,16 @@ import {Product} from "../../Product";
 })
 export class HeaderComponent
 {
+private router : Router;
 
+    constructor(router: Router)
+    {
+        this.router = router;
+    }
+
+    goToSearch()
+    {
+        let link = ['/search'];
+        this.router.navigate(link);
+    }
 }

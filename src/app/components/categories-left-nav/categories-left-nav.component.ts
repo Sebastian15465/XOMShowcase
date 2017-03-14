@@ -56,24 +56,5 @@ export class CategoriesLeftNavComponent implements OnInit
     }
 
 
-    /*function _sideNav() {
 
-     /!* Mobile Button *!/
-     jQuery("div.side-nav").each(function() {
-     var _t = jQuery('ul', this);
-     jQuery('button', this).bind("click", function() {
-     _t.slideToggle(300);
-     });
-     });
-
-
-     /!* Submenus *!/
-     jQuery("div.side-nav>ul>li>a.dropdown-toggle").bind("click", function(e) {
-     e.preventDefault();
-
-     jQuery(this).next('ul').slideToggle(200);
-     jQuery(this).closest('li').toggleClass('active');
-     });
-
-     }*/
 }

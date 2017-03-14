@@ -37,39 +37,28 @@ var SingleProductComponent = (function () {
     };
     SingleProductComponent.prototype.getArtikelListenpreis = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
-            .then(function (values) { return me.showcase_artikelListenpreisValues = values; })
-            .then(function () {
-            console.log("Bin da!");
-            console.log(me.product.id);
-            me.showcase_artikelListenpreisValues.forEach(function (x) { return console.log(x.value['value']); });
-        });
+            .then(function (values) { return me.showcase_artikelListenpreisValues = values; });
     };
     SingleProductComponent.prototype.getArtikelbild = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelbildValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelBildValues = values; });
     };
     SingleProductComponent.prototype.getArtikelurztext = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
-            .then(function (values) { return me.showcase_artikelKurztextValues = values; })
-            .then(function () { return console.log(me.showcase_artikelKurztextValues); });
+            .then(function (values) { return me.showcase_artikelKurztextValues = values; });
     };
     /*   TODO  */
     SingleProductComponent.prototype.getArtikelrating = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelRatingValues = values; });
     };
     /*   TODO  */
     SingleProductComponent.prototype.getArtikelAktionspreis = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelAktionsPreisValues = values; });
     };

@@ -1,11 +1,11 @@
 <div class="side-nav margin-bottom-60">
 
     <div class="side-nav-head">
-        <button class="fa fa-bars"></button>
+        <button class="fa fa-bars" (click)="list1"></button>
         <h4>Klassifikationen</h4>
     </div>
 
-    <ul class="list-group list-group-bordered list-group-noicon uppercase">
+    <ul #list1 class="list-group list-group-bordered list-group-noicon uppercase">
         <li *ngFor="let classification of classifications" class="list-group-item">
             <a [class.active]="classification === selectedClassification"
                (click)="onSelect(classification)"

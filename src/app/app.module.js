@@ -24,7 +24,7 @@ var footer_panel_component_1 = require("./components/footer-panel/footer-panel.c
 var popup_newsletter_component_1 = require("./components/popup-newsletter/popup-newsletter.component");
 var sub_group_component_1 = require("./components/categories-left-nav/sub-group/sub-group.component");
 var app_routing_module_1 = require("./app-routing.module");
-var welcome_component_1 = require("./components/welcome.component/welcome.component");
+var welcome_component_1 = require("./components/welcome-component/welcome.component");
 var detail_component_1 = require("./components/detail/detail.component");
 var single_product_component_1 = require("./components/featured-products/single-product/single-product.component");
 var picture_component_1 = require("./components/featured-products/single-product/Picture/picture.component");
@@ -33,6 +33,9 @@ var detail_pictures_component_1 = require("./components/detail/pictures/detail-p
 var detail_single_picture_component_1 = require("./components/detail/pictures/detail-single-picture/detail-single-picture.component");
 var modal_component_1 = require("./components/detail/pictures/detail-single-picture/modal/modal.component");
 var detail_header_component_1 = require("./components/detail/detail-header/detail-header.component");
+var rest_search_service_1 = require("./rest-search.service");
+var search_results_component_1 = require("./components/search-results/search-results.component");
+var single_search_result_component_1 = require("./components/search-results/single-search-result/single-search-result.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -64,10 +67,12 @@ var AppModule = (function () {
                 detail_pictures_component_1.DetailPicturesComponent,
                 detail_single_picture_component_1.DetailSinglePictureComponent,
                 modal_component_1.ModalComponent,
-                detail_header_component_1.DetailHeaderComponent
+                detail_header_component_1.DetailHeaderComponent,
+                search_results_component_1.SearchResultsComponent,
+                single_search_result_component_1.SingleSearchResultComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [resttest_service_1.RestService]
+            providers: [resttest_service_1.RestService, rest_search_service_1.RestSearchService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

@@ -4,8 +4,9 @@
 import {NgModule}             from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FeaturedProductsComponent}  from './components/featured-products/featured-products.component';
-import {WelcomeComponent}  from './components/welcome.component/welcome.component';
+import {WelcomeComponent}  from './components/welcome-component/welcome.component';
 import {DetailComponent}  from './components/detail/detail.component';
+import {SearchResultsComponent} from "./components/search-results/search-results.component";
 
 
 
@@ -15,12 +16,13 @@ const routes: Routes = [
     {path: 'classification/:id', component: FeaturedProductsComponent},
     {path: 'productgroup/:id', component: FeaturedProductsComponent},
     {path: 'detail/:id', component: DetailComponent},
+    {path: 'search', component: SearchResultsComponent}
 
 
 
 
     /*{ path: 'detail/:id', component: HeroDetailComponent },
-     { path: 'heroes',     component: HeroesComponent },*/
+     { path: 'products',     component: HeroesComponent },*/
 
 
 ];

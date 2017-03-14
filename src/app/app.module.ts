@@ -20,7 +20,7 @@ import {FooterPanelComponent} from "./components/footer-panel/footer-panel.compo
 import {PopupNewsletterComponent} from "./components/popup-newsletter/popup-newsletter.component";
 import {SubGroupComponent} from "./components/categories-left-nav/sub-group/sub-group.component";
 import {AppRoutingModule} from "./app-routing.module";
-import {WelcomeComponent} from "./components/welcome.component/welcome.component";
+import {WelcomeComponent} from "./components/welcome-component/welcome.component";
 import {DetailComponent} from "./components/detail/detail.component";
 import {SingleProductComponent} from "./components/featured-products/single-product/single-product.component";
 import {PictureComponent} from "./components/featured-products/single-product/Picture/picture.component";
@@ -29,6 +29,9 @@ import {DetailPicturesComponent} from "./components/detail/pictures/detail-pictu
 import {DetailSinglePictureComponent} from "./components/detail/pictures/detail-single-picture/detail-single-picture.component";
 import {ModalComponent} from "./components/detail/pictures/detail-single-picture/modal/modal.component";
 import {DetailHeaderComponent} from "./components/detail/detail-header/detail-header.component";
+import {RestSearchService} from "./rest-search.service";
+import {SearchResultsComponent} from "./components/search-results/search-results.component";
+import {SingleSearchResultComponent} from "./components/search-results/single-search-result/single-search-result.component";
 
 
 @NgModule({
@@ -59,12 +62,14 @@ import {DetailHeaderComponent} from "./components/detail/detail-header/detail-he
         DetailPicturesComponent,
         DetailSinglePictureComponent,
         ModalComponent,
-        DetailHeaderComponent
+        DetailHeaderComponent,
+        SearchResultsComponent,
+        SingleSearchResultComponent
 
 
     ],
     bootstrap: [AppComponent],
-    providers: [RestService]
+    providers: [RestService, RestSearchService]
 })
 export class AppModule
 {

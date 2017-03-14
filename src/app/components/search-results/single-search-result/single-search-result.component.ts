@@ -1,24 +1,21 @@
 /**
- * Created by sebastian.seelig on 02.03.2017.
+ * Created by sebastian.seelig on 22.02.2017.
  */
-/**
- * Created by sebastian.seelig on 15.02.2017.
- */
-import {Component, OnInit, Input} from '@angular/core';
-import {RestService} from "../../../resttest.service";
-import {Product} from "../../../Product";
-import {Router} from '@angular/router';
-import 'rxjs/add/operator/mergeMap';
-import {Values} from "../../../Values";
-import {forEach} from "@angular/router/src/utils/collection";
 
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from "../../../Product";
+import {RestService} from "../../../resttest.service";
+import {Router} from "@angular/router";
+import {Values} from "../../../Values";
 
 @Component({
     moduleId: module.id,
-    selector: 'single-product',
-    templateUrl: 'single-product.component.html'
+    selector: 'single-search-result',
+    templateUrl: 'single-search-result.component.html'
 })
-export class SingleProductComponent implements OnInit
+
+
+export class SingleSearchResultComponent implements OnInit
 {
     @Input()
     public product: Product;
@@ -30,6 +27,7 @@ export class SingleProductComponent implements OnInit
     private showcase_artikelBildValues: Values[];
     private showcase_artikelRatingValues: Values[];
     private showcase_artikelAktionsPreisValues: Values[];
+    private showcase_artikelBeschreibungValues: Values[];
     private showcase_artikelIsNewValues: Values[];
     private showcase_artikelIsOnSaleValues: Values[];
 
@@ -41,6 +39,7 @@ export class SingleProductComponent implements OnInit
 
 
     }
+
 
     ngOnInit(): void
     {
@@ -59,7 +58,7 @@ export class SingleProductComponent implements OnInit
         this.getArtikelListenpreis();
         this.getArtikelurztext();
         this.getArtikelbild();
-
+        this.getArtikelBeschreiung();
 
     }
 
@@ -69,6 +68,16 @@ export class SingleProductComponent implements OnInit
 
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelListenpreisValues = values)
+
+    }
+
+    getArtikelBeschreiung()
+    {
+        var me = this;
+
+        this.restService.getShowcaseArtikelbeschreibungsValueByProductId(me.product.id)
+            .then((values: Values[]) => me.showcase_artikelBeschreibungValues = values)
+
 
     }
 

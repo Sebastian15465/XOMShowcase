@@ -14,14 +14,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var featured_products_component_1 = require('./components/featured-products/featured-products.component');
-var welcome_component_1 = require('./components/welcome.component/welcome.component');
+var welcome_component_1 = require('./components/welcome-component/welcome.component');
 var detail_component_1 = require('./components/detail/detail.component');
+var search_results_component_1 = require("./components/search-results/search-results.component");
 var routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
     { path: 'welcome', component: welcome_component_1.WelcomeComponent },
     { path: 'classification/:id', component: featured_products_component_1.FeaturedProductsComponent },
     { path: 'productgroup/:id', component: featured_products_component_1.FeaturedProductsComponent },
     { path: 'detail/:id', component: detail_component_1.DetailComponent },
+    { path: 'search', component: search_results_component_1.SearchResultsComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

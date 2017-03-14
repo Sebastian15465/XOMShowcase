@@ -34,6 +34,7 @@
         defaultExtension: 'js'
       },
       rxjs: {
+
         defaultExtension: 'js'
       }
     }
