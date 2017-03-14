@@ -1,27 +1,28 @@
 <div class="side-nav margin-bottom-60">
 
     <div class="side-nav-head">
-        <button class="fa fa-bars" (click)="list1"></button>
-        <h4>Klassifikationen</h4>
+        <button class="fa fa-bars" (click)="menuToggleWhenSmallScreen()"></button>
+        <h4>{{strings.classifications[restService.languageSelected]}}</h4>
     </div>
-
-    <ul #list1 class="list-group list-group-bordered list-group-noicon uppercase">
-        <li *ngFor="let classification of classifications" class="list-group-item">
-            <a [class.active]="classification === selectedClassification"
-               (click)="onSelect(classification)"
-               class="dropdown-toggle"
-               >{{classification.name}}</a>
-            <!-- toggle component -->
-            <div *ngIf="selectedClassification === classification">
-                <div *ngFor="let productgroupItem of selectedClassification.productgroups">
-                    <categories-left-nav-sub-group
-                            [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
+    <div (window:resize)="onResize($event)">
+        <ul *ngIf="toggle" class="list-group list-group-bordered list-group-noicon uppercase">
+            <li *ngFor="let classification of classifications" class="list-group-item">
+                <a [class.active]="classification === selectedClassification"
+                   (click)="onSelect(classification)"
+                   class="dropdown-toggle"
+                >{{classification.name != null ? classification.name : "Kein Name für die Klassifikation: ID = " +
+                    classification.id + " fuer locale = " + languageSelected + " gepflegt"}}</a>
+                <!-- toggle component -->
+                <div *ngIf="selectedClassification === classification">
+                    <div *ngFor="let productgroupItem of selectedClassification.productgroups">
+                        <categories-left-nav-sub-group
+                                [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
 
-    </ul>
-
+        </ul>
+    </div>
 </div>
 
 

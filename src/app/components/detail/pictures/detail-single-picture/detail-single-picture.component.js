@@ -35,13 +35,9 @@ var DetailSinglePictureComponent = (function () {
     DetailSinglePictureComponent.prototype.openModal = function (activePicUrl) {
         this.showModal = true;
         this.activePictureUrl = activePicUrl;
-        console.log("openModal");
-        console.log(this.showModal);
     };
     DetailSinglePictureComponent.prototype.closeModal = function () {
         this.showModal = false;
-        console.log("closeModal");
-        console.log(this.showModal);
     };
     __decorate([
         core_1.Input(), 

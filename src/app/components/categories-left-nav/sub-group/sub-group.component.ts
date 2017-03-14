@@ -41,7 +41,7 @@ export class SubGroupComponent implements OnInit
     {
         var me = this;
         this.restService.getProductGroupWithExtendedProductgroups(this.productgroupId).then((productgroup1 => me.productgroup = productgroup1)).then(() =>
-            me.isDataAvailable = true).then(() => console.log("async"));
+            me.isDataAvailable = true)
 
     }
 

@@ -36,43 +36,32 @@ var DetailInformationComponent = (function () {
     DetailInformationComponent.prototype.getArtikelListenpreis = function () {
         var me = this;
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
-            .then(function (values) { return me.showcase_artikelListenpreisValues = values; })
-            .then(function () {
-            console.log("Bin da!");
-            console.log(me.product.id);
-            me.showcase_artikelListenpreisValues.forEach(function (x) { return console.log(x.value['value']); });
-        });
+            .then(function (values) { return me.showcase_artikelListenpreisValues = values; });
     };
     DetailInformationComponent.prototype.getArtikelbild = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelbildValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelBildValues = values; });
     };
     DetailInformationComponent.prototype.getArtikelkurztext = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
-            .then(function (values) { return me.showcase_artikelKurztextValues = values; })
-            .then(function () { return console.log(me.showcase_artikelKurztextValues); });
+            .then(function (values) { return me.showcase_artikelKurztextValues = values; });
     };
     DetailInformationComponent.prototype.getArtikelBeschreiung = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelbeschreibungsValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelBeschreibungValues = values; });
     };
     /*   TODO  */
     DetailInformationComponent.prototype.getArtikelrating = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelRatingValues = values; });
     };
     /*   TODO  */
     DetailInformationComponent.prototype.getArtikelAktionspreis = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelAktionsPreisValues = values; });
     };

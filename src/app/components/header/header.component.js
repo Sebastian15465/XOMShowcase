@@ -12,13 +12,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by sebastian.seelig on 15.02.2017.
  */
 var core_1 = require('@angular/core');
+var resttest_service_1 = require("../../resttest.service");
 var router_1 = require("@angular/router");
 var HeaderComponent = (function () {
-    function HeaderComponent(router) {
+    function HeaderComponent(router, restsevice) {
         this.router = router;
+        this.restservice = restsevice;
     }
+    HeaderComponent.prototype.ngOnInit = function () {
+        this.languageSelected = this.restservice.languageSelected;
+    };
+    HeaderComponent.prototype.setLanguage = function (language) {
+        this.restservice.languageSelected = language;
+        this.languageSelected = this.restservice.languageSelected;
+    };
     HeaderComponent.prototype.goToSearch = function () {
         var link = ['/search'];
+        this.router.navigate(link);
+    };
+    HeaderComponent.prototype.goToWelcome = function () {
+        var link = ['/welcome'];
         this.router.navigate(link);
     };
     HeaderComponent = __decorate([
@@ -27,7 +40,7 @@ var HeaderComponent = (function () {
             selector: 'header-component',
             templateUrl: 'header.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, resttest_service_1.RestService])
     ], HeaderComponent);
     return HeaderComponent;
 }());

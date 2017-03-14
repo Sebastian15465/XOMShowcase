@@ -24,10 +24,8 @@ var DetailHeaderComponent = (function () {
     };
     DetailHeaderComponent.prototype.getArtikelkurztext = function () {
         var me = this;
-        console.log(me.product.name);
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
-            .then(function (values) { return me.showcase_artikelKurztextValues = values; })
-            .then(function () { return console.log(me.showcase_artikelKurztextValues); });
+            .then(function (values) { return me.showcase_artikelKurztextValues = values; });
     };
     __decorate([
         core_1.Input(), 

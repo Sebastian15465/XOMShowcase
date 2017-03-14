@@ -28,7 +28,7 @@ var SubGroupComponent = (function () {
         var me = this;
         this.restService.getProductGroupWithExtendedProductgroups(this.productgroupId).then((function (productgroup1) { return me.productgroup = productgroup1; })).then(function () {
             return me.isDataAvailable = true;
-        }).then(function () { return console.log("async"); });
+        });
     };
     SubGroupComponent.prototype.toggleSelect = function () {
         if (this.isSelected == false) {

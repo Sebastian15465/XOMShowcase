@@ -3,6 +3,8 @@
  */
 
 import {Component} from '@angular/core';
+import {stringLanguageConstants} from "../../stringLanguageConstants";
+import {RestService} from "../../resttest.service";
 
 @Component({
     moduleId: module.id,
@@ -11,4 +13,15 @@ import {Component} from '@angular/core';
 })
 
 
-export class WelcomeComponent{}
+export class WelcomeComponent
+{
+    private strings: stringLanguageConstants;
+    private restService: RestService;
+
+    constructor(strings: stringLanguageConstants, restservice: RestService)
+    {
+        this.strings = strings;
+        this.restService = restservice;
+
+    }
+}

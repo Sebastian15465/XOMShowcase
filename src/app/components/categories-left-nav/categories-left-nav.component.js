@@ -13,14 +13,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var resttest_service_1 = require("../../resttest.service");
+var stringLanguageConstants_1 = require("../../stringLanguageConstants");
 var router_1 = require("@angular/router");
 var CategoriesLeftNavComponent = (function () {
-    function CategoriesLeftNavComponent(restService, router1) {
+    function CategoriesLeftNavComponent(restService, router1, stringConstants) {
+        this.toggle = false;
         this.restService = restService;
         this.router = router1;
+        this.strings = stringConstants;
     }
     CategoriesLeftNavComponent.prototype.ngOnInit = function () {
         this.getClassificationsFromRest();
+        if (window.innerWidth >= 768) {
+            this.toggle = true;
+        }
+        this.languageSelected = this.restService.languageSelected;
     };
     CategoriesLeftNavComponent.prototype.getClassificationsFromRest = function () {
         var _this = this;
@@ -29,7 +36,6 @@ var CategoriesLeftNavComponent = (function () {
     CategoriesLeftNavComponent.prototype.onSelect = function (classification) {
         if (this.selectedClassification != classification) {
             this.selectedClassification = classification;
-            console.log("Klassifikation ausgewählt.");
             this.router.navigate(['classification', this.selectedClassification.id]);
         }
         else {
@@ -37,13 +43,28 @@ var CategoriesLeftNavComponent = (function () {
             this.router.navigate(['/welcome']);
         }
     };
+    CategoriesLeftNavComponent.prototype.menuToggleWhenSmallScreen = function () {
+        if (this.toggle == false) {
+            this.toggle = true;
+        }
+        else
+            this.toggle = false;
+    };
+    CategoriesLeftNavComponent.prototype.onResize = function (event) {
+        if (event.target.innerWidth >= 768) {
+            this.toggle = true;
+        }
+        else
+            this.toggle = false;
+    };
     CategoriesLeftNavComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'categories-left-nav',
+            styleUrls: ['categories-left-nav.component.css'],
             templateUrl: 'categories-left-nav.component.html'
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router])
+        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router, stringLanguageConstants_1.stringLanguageConstants])
     ], CategoriesLeftNavComponent);
     return CategoriesLeftNavComponent;
 }());

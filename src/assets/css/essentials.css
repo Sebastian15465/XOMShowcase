@@ -11171,7 +11171,6 @@ div.side-nav .side-nav-head button {
 @media only screen and (max-width: 767px) {
 	div.side-nav ul {
 		display:none;
-		max-height:350px;
 		overflow-y:auto;
 		margin-bottom:30px;
 	}
@@ -11196,8 +11195,13 @@ div.side-nav .side-nav-head button {
 }
 @media only screen and (max-width: 768px) {
 	div.side-nav ul {
-		max-height:250px;
 		overflow-y:auto;
+	}
+	div.side-nav ul.list-group-bordered>li>a {
+		padding-bottom: 30px;
+	}
+	div.side-nav ul>li>a {
+		padding-bottom: 30px;
 	}
 }
 

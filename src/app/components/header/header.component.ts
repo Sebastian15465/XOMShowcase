@@ -12,18 +12,38 @@ import {Router} from "@angular/router";
     selector: 'header-component',
     templateUrl: 'header.component.html'
 })
-export class HeaderComponent
+export class HeaderComponent implements OnInit
 {
-private router : Router;
 
-    constructor(router: Router)
+private router : Router;
+private restservice : RestService;
+private languageSelected : string;
+
+    constructor(router: Router, restsevice : RestService)
     {
         this.router = router;
+        this.restservice = restsevice;
+    }
+
+    ngOnInit(): void
+    {
+        this.languageSelected = this.restservice.languageSelected;
+    }
+
+    setLanguage(language :string) : void
+    {
+        this.restservice.languageSelected = language;
+        this.languageSelected = this.restservice.languageSelected;
     }
 
     goToSearch()
     {
         let link = ['/search'];
+        this.router.navigate(link);
+    }
+    goToWelcome()
+    {
+        let link = ['/welcome'];
         this.router.navigate(link);
     }
 }

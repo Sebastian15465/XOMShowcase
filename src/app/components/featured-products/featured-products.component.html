@@ -1,4 +1,4 @@
-<h1 class="size-17 margin-bottom-20">Produkte</h1>
+<h1 class="size-17 margin-bottom-20">{{strings.products[restService.languageSelected]}}</h1>
 
 <ul class="shop-item-list row list-inline nomargin">
 
@@ -8,7 +8,7 @@
     <div *ngIf="products">
 
         <div *ngIf="products.length == 0">
-            <h2>Hier gibt es leider keine Produkte</h2>
+            <h2>{{strings.noProducts[restService.languageSelected]}}</h2>
         </div>
         <li *ngFor="let product of products" class="col-lg-3 col-sm-3">
 

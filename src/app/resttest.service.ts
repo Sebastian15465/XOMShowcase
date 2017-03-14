@@ -17,12 +17,14 @@ import {tryCatch} from "rxjs/util/tryCatch";
 @Injectable()
 export class RestService
 {
-    private languageSelected = "de";
+
+
+    private _languageSelected = "en";
     private hosturl = "http://my-scott:8080/";
     private productUrl = this.hosturl + 'xom-rest/products/';// URL to web API
     private classificationUrl = this.hosturl + 'xom-rest/productclassifications/';// URL to web API
     private productgroupUrl = this.hosturl + 'xom-rest/productgroups/';// URL to web API
-    private assetUrl = this.hosturl + "xom-rest/assets/"
+    private assetUrl = this.hosturl + "xom-rest/assets/";
     private headers = new Headers({'Content-Type': 'application/json'});
     private _http: Http;
 
@@ -31,6 +33,18 @@ export class RestService
         this.http = http;
     }
 
+    get languageSelected(): string
+    {
+        return this._languageSelected;
+    }
+
+    set languageSelected(value: string)
+    {
+        if (value == "de" || value == "en")
+        {
+            this._languageSelected = value;
+        }
+    }
 
     get http(): Http
     {
@@ -45,7 +59,7 @@ export class RestService
 
     getProductsFromProductgroup(Id: string): Promise<Product[]>
     {
-        const url = `${this.productgroupUrl}${Id}${"/products"}${"?locale=" + this.languageSelected}`;
+        const url = `${this.productgroupUrl}${Id}${"/products"}${"?locale=" + this._languageSelected}`;
 
         return this.http.get(url)
             .toPromise()
@@ -74,7 +88,7 @@ export class RestService
 
     getProductGroupWithExtendedProductgroups(productgroupId: string): Promise<Productgroup>
     {
-        const url = `${this.productgroupUrl}${productgroupId}${"?locale=" + this.languageSelected}${"&expand=productgroups"}`;
+        const url = `${this.productgroupUrl}${productgroupId}${"?locale=" + this._languageSelected}${"&expand=productgroups"}`;
         return this.http.get(url)
             .toPromise()
             .then(response => response.json() as Productgroup)
@@ -84,7 +98,7 @@ export class RestService
 
     getClassificationWithProductGroups(): Promise<Classification[]>
     {
-        const url = `${this.classificationUrl}${"?locale=" + this.languageSelected}${"&expand=productgroups"}`;
+        const url = `${this.classificationUrl}${"?locale=" + this._languageSelected}${"&expand=productgroups"}`;
         return this.http.get(url)
             .toPromise()
             .then(response => response.json().data as Classification[])
@@ -102,7 +116,7 @@ export class RestService
 
     getShowcaseArtikelPreisValueByProductId(id: string): Promise<Values[]>
     {
-        const url = `${this.productUrl}/${id}/${"?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikellistenpreis&format=object"}`;
+        const url = `${this.productUrl}/${id}/${"?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikellistenpreis&format=object"}`;
 
         return this.http.get(url)
             .toPromise()
@@ -112,7 +126,7 @@ export class RestService
 
     getShowcaseArtikelkurztextValueByProductId(id: string): Promise<Values[]>
     {
-        const url = `${this.productUrl}/${id}/${"?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikelkurztext&format=object"}`;
+        const url = `${this.productUrl}/${id}/${"?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikelkurztext&format=object"}`;
 
         return this.http.get(url)
             .toPromise()
@@ -123,7 +137,7 @@ export class RestService
 
     getShowcaseArtikelbildValueByProductId(id: string): Promise<Values[]>
     {
-        const url = `${this.productUrl}/${id}/${"?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikelbild&format=object"}`;
+        const url = `${this.productUrl}/${id}/${"?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikelbild&format=object"}`;
 
         return this.http.get(url)
             .toPromise()
@@ -133,7 +147,7 @@ export class RestService
 
     getShowcaseArtikelbeschreibungsValueByProductId(id: string): Promise<Values[]>
     {
-        const url = `${this.productUrl}/${id}/${"?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikelbeschreibung&format=object"}`;
+        const url = `${this.productUrl}/${id}/${"?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikelbeschreibung&format=object"}`;
 
         return this.http.get(url)
             .toPromise()
@@ -192,4 +206,5 @@ export class RestService
         return Observable.throw(errMsg);
     }
 }
+
 

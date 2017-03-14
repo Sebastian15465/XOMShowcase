@@ -1,11 +1,7 @@
-
-.myul {
-    padding-left: 12%;
-}
-
 @media (max-width: 767px) {
     div.side-nav ul {
         display: block;
+
         overflow-y: auto;
 
     }

@@ -43,10 +43,10 @@ export class DetailHeaderComponent
     getArtikelkurztext()
     {
         var me = this;
-        console.log(me.product.name)
+
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelKurztextValues = values)
-            .then(() => console.log(me.showcase_artikelKurztextValues))
+
 
     }
 

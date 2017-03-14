@@ -66,19 +66,13 @@ export class DetailInformationComponent
         var me = this;
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelListenpreisValues = values)
-            .then(function ()
-            {
-                console.log("Bin da!");
-                console.log(me.product.id);
-                me.showcase_artikelListenpreisValues.forEach(x => console.log(x.value['value']))
 
-            })
     }
 
     getArtikelbild()
     {
         var me = this;
-        console.log(me.product.name)
+
         this.restService.getShowcaseArtikelbildValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelBildValues = values)
 
@@ -87,17 +81,17 @@ export class DetailInformationComponent
     getArtikelkurztext()
     {
         var me = this;
-        console.log(me.product.name)
+
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelKurztextValues = values)
-            .then(() => console.log(me.showcase_artikelKurztextValues))
+
 
     }
 
     getArtikelBeschreiung()
     {
         var me = this;
-        console.log(me.product.name)
+
         this.restService.getShowcaseArtikelbeschreibungsValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelBeschreibungValues = values)
 
@@ -108,7 +102,7 @@ export class DetailInformationComponent
     getArtikelrating()
     {
         var me = this;
-        console.log(me.product.name)
+
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelRatingValues = values)
 
@@ -119,7 +113,7 @@ export class DetailInformationComponent
     getArtikelAktionspreis()
     {
         var me = this;
-        console.log(me.product.name)
+
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then((values: Values[]) => me.showcase_artikelAktionsPreisValues = values)
 

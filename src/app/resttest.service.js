@@ -16,7 +16,7 @@ require('rxjs/add/operator/map');
 require('rxjs/add/operator/toPromise');
 var RestService = (function () {
     function RestService(http) {
-        this.languageSelected = "de";
+        this._languageSelected = "en";
         this.hosturl = "http://my-scott:8080/";
         this.productUrl = this.hosturl + 'xom-rest/products/'; // URL to web API
         this.classificationUrl = this.hosturl + 'xom-rest/productclassifications/'; // URL to web API
@@ -25,6 +25,18 @@ var RestService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.http = http;
     }
+    Object.defineProperty(RestService.prototype, "languageSelected", {
+        get: function () {
+            return this._languageSelected;
+        },
+        set: function (value) {
+            if (value == "de" || value == "en") {
+                this._languageSelected = value;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(RestService.prototype, "http", {
         get: function () {
             return this._http;
@@ -36,7 +48,7 @@ var RestService = (function () {
         configurable: true
     });
     RestService.prototype.getProductsFromProductgroup = function (Id) {
-        var url = "" + this.productgroupUrl + Id + "/products" + ("?locale=" + this.languageSelected);
+        var url = "" + this.productgroupUrl + Id + "/products" + ("?locale=" + this._languageSelected);
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().data; })
@@ -57,14 +69,14 @@ var RestService = (function () {
             .catch(this.handleError);
     };
     RestService.prototype.getProductGroupWithExtendedProductgroups = function (productgroupId) {
-        var url = "" + this.productgroupUrl + productgroupId + ("?locale=" + this.languageSelected) + "&expand=productgroups";
+        var url = "" + this.productgroupUrl + productgroupId + ("?locale=" + this._languageSelected) + "&expand=productgroups";
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     RestService.prototype.getClassificationWithProductGroups = function () {
-        var url = "" + this.classificationUrl + ("?locale=" + this.languageSelected) + "&expand=productgroups";
+        var url = "" + this.classificationUrl + ("?locale=" + this._languageSelected) + "&expand=productgroups";
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().data; })
@@ -78,28 +90,28 @@ var RestService = (function () {
             .catch(this.handleError);
     };
     RestService.prototype.getShowcaseArtikelPreisValueByProductId = function (id) {
-        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikellistenpreis&format=object");
+        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikellistenpreis&format=object");
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().values != (new Array()) ? response.json().values : null; })
             .catch(this.handleError);
     };
     RestService.prototype.getShowcaseArtikelkurztextValueByProductId = function (id) {
-        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikelkurztext&format=object");
+        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikelkurztext&format=object");
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().values != (new Array()) ? response.json().values : null; })
             .catch(this.handleError);
     };
     RestService.prototype.getShowcaseArtikelbildValueByProductId = function (id) {
-        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikelbild&format=object");
+        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikelbild&format=object");
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().values != [] ? response.json().values : null; })
             .catch(this.handleError);
     };
     RestService.prototype.getShowcaseArtikelbeschreibungsValueByProductId = function (id) {
-        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this.languageSelected + "&expand=values&showvalue=showcase_artikelbeschreibung&format=object");
+        var url = this.productUrl + "/" + id + "/" + ("?locale=" + this._languageSelected + "&expand=values&showvalue=showcase_artikelbeschreibung&format=object");
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().values != (new Array()) ? response.json().values : null; })

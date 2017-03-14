@@ -63,8 +63,7 @@ export class DetailSinglePictureComponent
     {
         this.showModal = true;
         this.activePictureUrl = activePicUrl;
-        console.log("openModal");
-        console.log(this.showModal);
+
 
     }
 
@@ -72,8 +71,7 @@ export class DetailSinglePictureComponent
     {
 
         this.showModal = false;
-        console.log("closeModal");
-        console.log(this.showModal);
+
     }
 
 

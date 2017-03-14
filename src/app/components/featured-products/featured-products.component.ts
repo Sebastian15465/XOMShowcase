@@ -13,6 +13,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/from';
+import {stringLanguageConstants} from "../../stringLanguageConstants";
 
 
 @Component({
@@ -27,16 +28,17 @@ export class FeaturedProductsComponent implements OnInit
     private restService: RestService;
     private router: Router;
     private products: Product[] = new Array<Product>();
-
+private strings : stringLanguageConstants;
     private route: ActivatedRoute;
 
 
 
-    constructor(restService: RestService, router1: Router, route: ActivatedRoute)
+    constructor(restService: RestService, router1: Router, route: ActivatedRoute, stringConstants : stringLanguageConstants)
     {
         this.restService = restService;
         this.router = router1;
         this.route = route;
+        this.strings = stringConstants;
 
 
     }

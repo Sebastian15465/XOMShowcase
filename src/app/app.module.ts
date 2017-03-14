@@ -32,6 +32,7 @@ import {DetailHeaderComponent} from "./components/detail/detail-header/detail-he
 import {RestSearchService} from "./rest-search.service";
 import {SearchResultsComponent} from "./components/search-results/search-results.component";
 import {SingleSearchResultComponent} from "./components/search-results/single-search-result/single-search-result.component";
+import {stringLanguageConstants} from "./stringLanguageConstants";
 
 
 @NgModule({
@@ -69,7 +70,7 @@ import {SingleSearchResultComponent} from "./components/search-results/single-se
 
     ],
     bootstrap: [AppComponent],
-    providers: [RestService, RestSearchService]
+    providers: [RestService, RestSearchService, stringLanguageConstants]
 })
 export class AppModule
 {

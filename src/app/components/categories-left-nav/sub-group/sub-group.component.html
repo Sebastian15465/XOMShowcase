@@ -6,7 +6,7 @@
                                 ({{productgroup.productgroups.length}})
                             </span>
 
-            {{ productgroup.name}}
+            {{ productgroup.name != null ? productgroup.name : "Kein Name für die Produktgruppe: ID = " + productgroup.id + " fuer locale = " + restService.languageSelected + " gepflegt"}}
 
 
         </a>

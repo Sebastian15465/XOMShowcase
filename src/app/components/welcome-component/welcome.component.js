@@ -12,8 +12,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var stringLanguageConstants_1 = require("../../stringLanguageConstants");
+var resttest_service_1 = require("../../resttest.service");
 var WelcomeComponent = (function () {
-    function WelcomeComponent() {
+    function WelcomeComponent(strings, restservice) {
+        this.strings = strings;
+        this.restService = restservice;
     }
     WelcomeComponent = __decorate([
         core_1.Component({
@@ -21,7 +25,7 @@ var WelcomeComponent = (function () {
             selector: 'welcome-c',
             templateUrl: './welcome.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [stringLanguageConstants_1.stringLanguageConstants, resttest_service_1.RestService])
     ], WelcomeComponent);
     return WelcomeComponent;
 }());

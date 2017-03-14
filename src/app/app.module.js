@@ -36,6 +36,7 @@ var detail_header_component_1 = require("./components/detail/detail-header/detai
 var rest_search_service_1 = require("./rest-search.service");
 var search_results_component_1 = require("./components/search-results/search-results.component");
 var single_search_result_component_1 = require("./components/search-results/single-search-result/single-search-result.component");
+var stringLanguageConstants_1 = require("./stringLanguageConstants");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -72,7 +73,7 @@ var AppModule = (function () {
                 single_search_result_component_1.SingleSearchResultComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [resttest_service_1.RestService, rest_search_service_1.RestSearchService]
+            providers: [resttest_service_1.RestService, rest_search_service_1.RestSearchService, stringLanguageConstants_1.stringLanguageConstants]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

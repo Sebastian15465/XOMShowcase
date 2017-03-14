@@ -19,12 +19,14 @@ require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/observable/from');
+var stringLanguageConstants_1 = require("../../stringLanguageConstants");
 var FeaturedProductsComponent = (function () {
-    function FeaturedProductsComponent(restService, router1, route) {
+    function FeaturedProductsComponent(restService, router1, route, stringConstants) {
         this.products = new Array();
         this.restService = restService;
         this.router = router1;
         this.route = route;
+        this.strings = stringConstants;
     }
     FeaturedProductsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -49,7 +51,7 @@ var FeaturedProductsComponent = (function () {
             selector: 'featured-products',
             templateUrl: 'featured-products.component.html'
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router, router_1.ActivatedRoute, stringLanguageConstants_1.stringLanguageConstants])
     ], FeaturedProductsComponent);
     return FeaturedProductsComponent;
 }());
