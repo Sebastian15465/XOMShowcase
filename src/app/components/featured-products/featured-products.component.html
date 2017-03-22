@@ -1,17 +1,20 @@
-<h1 class="size-17 margin-bottom-20">{{strings.products[restService.languageSelected]}}</h1>
+
+<!-- String: Produkte oder Products -->
+<h1 class="size-17 margin-bottom-20">{{strings.products[languageSelected]}}</h1>
 
 <ul class="shop-item-list row list-inline nomargin">
 
     <!-- ITEM -->
 
-
+    <!-- Wenn products geladen wurde, dann zeige die Kind-Elemente an. -->
     <div *ngIf="products">
-
+        <!-- Wenn es keine Produkte an dieser Stelle gibt, dann zeige den String "Keine Produkte" an. -->
         <div *ngIf="products.length == 0">
-            <h2>{{strings.noProducts[restService.languageSelected]}}</h2>
+            <h2>{{strings.noProducts[languageSelected]}}</h2>
         </div>
+        <!-- Für jedes Produkt -->
         <li *ngFor="let product of products" class="col-lg-3 col-sm-3">
-
+            <!-- erstelle ein single-product Komponente mit dem jeweiligen Produkt als Input. -->
             <single-product [product]="product"></single-product>
 
         </li>

@@ -1,6 +1,9 @@
+<!-- Wenn das BildUrl-Array da ist, dann zeige das erste Bild an. -->
 <img *ngIf="pictureUrls" class="img-responsive"
      src="{{pictureUrls[0]}}"
      alt="shop first image">
+
+<!-- Wenn es ein zweites Bild gibt, dann benutze das als hover-Bild -->
 <img *ngIf="pictureUrls[1]" class="img-responsive"
      src="{{pictureUrls[1]}}"
      alt="shop hover image">

@@ -8,13 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require('@angular/core'); // Importe - Pfade der Module/Komponente
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
-var resttest_service_1 = require("./resttest.service");
-var slide_top_component_1 = require("./components/slide-top/slide-top.component");
+var rest_service_1 = require("./rest.service");
 var top_bar_1 = require("./components/top-bar/top-bar");
 var header_component_1 = require("./components/header/header.component");
 var featured_products_component_1 = require("./components/featured-products/featured-products.component");
@@ -51,7 +50,6 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                slide_top_component_1.SlideTopComponent,
                 top_bar_1.TopBarComponent,
                 header_component_1.HeaderComponent,
                 featured_products_component_1.FeaturedProductsComponent,
@@ -73,7 +71,7 @@ var AppModule = (function () {
                 single_search_result_component_1.SingleSearchResultComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [resttest_service_1.RestService, rest_search_service_1.RestSearchService, stringLanguageConstants_1.stringLanguageConstants]
+            providers: [rest_service_1.RestService, rest_search_service_1.RestSearchService, stringLanguageConstants_1.stringLanguageConstants] // Injectables
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

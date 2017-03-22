@@ -4,7 +4,7 @@
 
         <div class="mySlides">
             <div class="numbertext">1 / 4</div>
-            <img src="{{activePictureUrl}}" style="width:100%">
+            <img src="{{activePictureUrl}}" style="width:100%">                     <!-- Zeige aktives Bild an. -->
         </div>
 
         <a class="prev" (onclick)="plusSlides(-1)">&#10094;</a>
@@ -14,11 +14,11 @@
             <p id="caption"></p>
         </div>
 
-        <div class="row" style="background-color: #0b0b0b">
-            <div *ngFor="let item213 of pictureUrls" class="column">
+        <div class="row" style="background-color: #0b0b0b">                                            <!-- Kleine Preview Bilder -->
+            <div *ngFor="let item213 of pictureUrls" class="column">            <!-- Für jede URL in dem PictureURL-Array... -->
                 <div class="col-xs-6 col-md-4">
-                    <img class="demo" [src]="item213+'&width=300&height=200'" 
-                         height="100" (onclick)="currentSlide(item)" (alt)=item>
+                    <img class="demo" [src]="item213+'&width=300&height=200'"
+                         height="100" (onclick)="currentSlide(item)" (alt)=item>            <!-- Zeige bild als kleines preview an. -->
                 </div>
             </div>
         </div>

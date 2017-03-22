@@ -1,11 +1,5 @@
-/**
- * Created by sebastian.seelig on 23.02.2017.
- */
-import {externalIDsClass} from "./externalIDsClass";
 import {Showvalue} from "./Showvalue";
-/**
- * Created by sebastian.seelig on 08.02.2017.
- */
+
 export class Values
 {
     id: string;
@@ -16,6 +10,7 @@ export class Values
     type:string;
     name:string;
     valuetype: string;
-    value: JSON;
+    value: JSON;                                        // Hier JSON, weil es keine genormte value Klasse gibt.
+                                                        // Werte auf https://wiki.myview.de/display/DOCmyXOM/Darstellung+von+Werten#DarstellungvonWerten-Allgemeines
     showvalues: Showvalue[] = new Array<Showvalue>();
 }

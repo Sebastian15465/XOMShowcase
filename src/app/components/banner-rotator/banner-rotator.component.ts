@@ -3,7 +3,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {RestService} from "../../resttest.service";
+import {RestService} from "../../rest.service";
 import {Product} from "../../Product";
 
 

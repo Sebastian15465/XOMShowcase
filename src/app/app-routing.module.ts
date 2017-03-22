@@ -1,6 +1,3 @@
-/**
- * Created by sebastian.seelig on 09.02.2017.
- */
 import {NgModule}             from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FeaturedProductsComponent}  from './components/featured-products/featured-products.component';
@@ -8,23 +5,24 @@ import {WelcomeComponent}  from './components/welcome-component/welcome.componen
 import {DetailComponent}  from './components/detail/detail.component';
 import {SearchResultsComponent} from "./components/search-results/search-results.component";
 
+const routes: Routes = [                                                    // Definition der Routen der gesamten App.
 
+    {path: '', redirectTo: '/welcome', pathMatch: 'full'},                  // Wenn kein Pfad in der Adressleiste des Browsers, dann gehe zum welcome Pfad.
 
-const routes: Routes = [
-    {path: '', redirectTo: '/welcome', pathMatch: 'full'},
-    {path: 'welcome', component: WelcomeComponent},
-    {path: 'classification/:id', component: FeaturedProductsComponent},
-    {path: 'productgroup/:id', component: FeaturedProductsComponent},
-    {path: 'detail/:id', component: DetailComponent},
-    {path: 'search', component: SearchResultsComponent}
+    {path: 'welcome', component: WelcomeComponent},                         // Wenn der Pfad welcome ist, dann lade den WelcomeComponent an der stelle an der sich das
+                                                                            // <router-outlet></router-outlet> befindet.
 
+    {path: 'classification/:id', component: FeaturedProductsComponent},     // Wenn der Pfad classification ist, dann lade den FeaturedProductsComponent an der stelle an der sich
+                                                                            // das <router-outlet></router-outlet> befindet.
 
+    {path: 'productgroup/:id', component: FeaturedProductsComponent},       // Wenn der Pfad productgroup ist, dann lade den FeaturedProductsComponent an der stelle an der sich
+                                                                            // das <router-outlet></router-outlet> befindet.
 
+    {path: 'detail/:id', component: DetailComponent},                       // Wenn der Pfad detail ist, dann lade den DetailComponent an der stelle an der sich
+                                                                            // das <router-outlet></router-outlet> befindet.
 
-    /*{ path: 'detail/:id', component: HeroDetailComponent },
-     { path: 'products',     component: HeroesComponent },*/
-
-
+    {path: 'search', component: SearchResultsComponent}                     // Wenn der Pfad detail ist, dann lade den DetailComponent an der stelle an der sich
+                                                                            // das <router-outlet></router-outlet> befindet.
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

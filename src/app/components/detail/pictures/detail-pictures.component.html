@@ -1,55 +1,10 @@
-<div class="thumbnail relative margin-bottom-3">
+<div class="thumbnail relative margin-bottom-3">                <!-- Bootstrap Klassen -->
 
+
+    <!-- Lade detailSinglePicture-component wenn die showcase_artikelBildValues angekommen sind. Als Input übergebe showcase_artikelBildValues. -->
     <detailSinglePicture-component *ngIf="showcase_artikelBildValues" [assetValues]="showcase_artikelBildValues"></detailSinglePicture-component>
 
 </div>
-<!--
-&lt;!&ndash; Thumbnails (required height:100px) &ndash;&gt;
-<div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured owl-theme owl-carousel-init"
-     data-plugin-options="{&quot;singleItem&quot;: false, &quot;autoPlay&quot;: false, &quot;navigation&quot;: true, &quot;pagination&quot;: false}"
-     style="opacity: 1; display: block;">
-    <div class="owl-wrapper-outer">
-        <div class="owl-wrapper"
-             style="width: 1176px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);">
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail active"
-                                                          href="assets/images/demo/shop/products/1000x1500/p5.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p5.jpg" height="100" alt="">
-            </a></div>
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail"
-                                                          href="assets/images/demo/shop/products/1000x1500/p6.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p6.jpg" height="100" alt="">
-            </a></div>
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail"
-                                                          href="assets/images/demo/shop/products/1000x1500/p7.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p7.jpg" height="100" alt="">
-            </a></div>
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail"
-                                                          href="assets/images/demo/shop/products/1000x1500/p8.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p8.jpg" height="100" alt="">
-            </a></div>
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail"
-                                                          href="assets/images/demo/shop/products/1000x1500/p9.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p9.jpg" height="100" alt="">
-            </a></div>
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail"
-                                                          href="assets/images/demo/shop/products/1000x1500/p10.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p10.jpg" height="100" alt="">
-            </a></div>
-            <div class="owl-item" style="width: 84px;"><a class="thumbnail"
-                                                          href="assets/images/demo/shop/products/1000x1500/p11.jpg">
-                <img src="assets/images/demo/shop/products/100x100/p11.jpg" height="100" alt="">
-            </a></div>
-        </div>
-    </div>
 
-
-    <div class="owl-controls clickable">
-        <div class="owl-buttons">
-            <div class="owl-prev"><i class="fa fa-angle-left"></i></div>
-            <div class="owl-next"><i class="fa fa-angle-right"></i></div>
-        </div>
-    </div>
-</div>
-&lt;!&ndash; /Thumbnails &ndash;&gt;-->
-
+<!-- Zurück Button -->
 <button (click)="goBack()">Back</button>

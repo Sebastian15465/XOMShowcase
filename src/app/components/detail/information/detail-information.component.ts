@@ -2,7 +2,7 @@
  * Created by sebastian.seelig on 15.02.2017.
  */
 import {Component, OnInit, Input} from '@angular/core';
-import {RestService} from "../../../resttest.service";
+import {RestService} from "../../../rest.service";
 import {Product} from "../../../Product";
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Location}                 from '@angular/common';
@@ -12,30 +12,30 @@ import {Observable} from "rxjs";
 import {Response} from "@angular/http";
 
 
-@Component({
+@Component({                                                                        // Component decorator
     moduleId: module.id,
-    selector: 'detailInformation-component',
-    templateUrl: 'detail-information.component.html'
+    selector: 'detailInformation-component',                                        // Selector der Komponente => <detailInformation-component [product]= product1></detailInformation-component>
+    templateUrl: 'detail-information.component.html'                                // Pfad zum HTML-Template.
 })
 export class DetailInformationComponent
 {
-    @Input()
-    public product: Product;
+    @Input()                                                        // Input decorator
+    public product: Product;                                        // Input Property vom Typ Product
 
-    private restService: RestService;
-    private router: Router;
-    private route: ActivatedRoute;
-    private location: Location;
-    private showcase_artikelListenpreisValues: Values[];
-    private showcase_artikelKurztextValues: Values[];
-    private showcase_artikelBildValues: Values[];
-    private showcase_artikelRatingValues: Values[];
-    private showcase_artikelAktionsPreisValues: Values[];
-    private showcase_artikelBeschreibungValues: Values[];
-    private showcase_artikelIsNewValues: Values[];
-    private showcase_artikelIsOnSaleValues: Values[];
+    private restService: RestService;                                   // Property für den RestService.
+    private router: Router;                                             // Property für den Router.
+    private route: ActivatedRoute;                                      // Property für die aktuelle URL.
+    private location: Location;                                         // Für den back-Button.
+    private showcase_artikelListenpreisValues: Values[];                // Property für die Artikellistenpreis Values.
+    private showcase_artikelKurztextValues: Values[];                   // Property für die Artikelkurztext Values.
+    private showcase_artikelBildValues: Values[];                       // Property für die Artikelbild Values.
+    private showcase_artikelRatingValues: Values[];                     // Property für die ArtikelRating Values.
+    private showcase_artikelAktionsPreisValues: Values[];               // Property für die ArtikellAktionspreis Values.
+    private showcase_artikelBeschreibungValues: Values[];               // Property für die Artikelbeschreibungs Values.
+    private showcase_artikelIsNewValues: Values[];                      // Property für die ArtikellisNew Values.
+    private showcase_artikelIsOnSaleValues: Values[];                   // Property für die ArtikelIsOnSale Values.
 
-    constructor(restService: RestService, router1: Router, route: ActivatedRoute, location: Location)
+    constructor(restService: RestService, router1: Router, route: ActivatedRoute, location: Location) // DI der benötigten Services und Funktionalitäten.
     {
         this.restService = restService;
         this.router = router1;
@@ -51,16 +51,22 @@ export class DetailInformationComponent
     }
 
 
+    /**
+     * Auswahl der Funktionen die angestoßen werden sollen.
+     */
     getInformations(): void
     {
         this.getArtikelListenpreis();
         this.getArtikelkurztext();
         this.getArtikelbild();
-        this.getArtikelBeschreiung();
+        this.getArtikelBeschreibung();
 
 
     }
 
+    /**
+     * Hole Artikellistenpreis Values vom RestService
+     */
     getArtikelListenpreis(): void
     {
         var me = this;
@@ -69,6 +75,9 @@ export class DetailInformationComponent
 
     }
 
+    /**
+     * Hole Artikelbild Values vom RestService
+     */
     getArtikelbild()
     {
         var me = this;
@@ -78,6 +87,9 @@ export class DetailInformationComponent
 
     }
 
+    /**
+     * Hole Artikelkurztext Values von RestService
+     */
     getArtikelkurztext()
     {
         var me = this;
@@ -88,7 +100,10 @@ export class DetailInformationComponent
 
     }
 
-    getArtikelBeschreiung()
+    /**
+     * Hole Artikelbeschreibung von RestService
+     */
+    getArtikelBeschreibung()
     {
         var me = this;
 
@@ -120,6 +135,9 @@ export class DetailInformationComponent
     }
 
 
+    /**
+     * Browser zurück Funktionalität.
+     */
     goBack(): void
     {
         this.location.back();

@@ -1,7 +1,7 @@
 /**
  * Created by sebastian.seelig on 17.02.2017.
  */
-import {externalIDsClass} from "./externalIDsClass";
+import {externalIDsClass} from "./externalIDs";
 import {Product} from "./Product";
 
 export class Productgroup
@@ -13,10 +13,10 @@ export class Productgroup
     modifier:string;
     type:string;
     name:string;
-    externalIds:externalIDsClass;
+    externalIds:externalIDsClass = new externalIDsClass;
     parent:string[];
-    productgroups: Productgroup[];
-    products: Product[];
+    productgroups: Productgroup[] = new Array<Productgroup>();
+    products: Product[] = new Array<Product>();
     profiles:string[];
     attributes:string[];
     values:string[];

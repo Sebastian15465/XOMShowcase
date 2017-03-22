@@ -1,9 +1,7 @@
 "use strict";
-/**
- * Created by sebastian.seelig on 08.02.2017.
- */
 var Values = (function () {
     function Values() {
+        // Werte auf https://wiki.myview.de/display/DOCmyXOM/Darstellung+von+Werten#DarstellungvonWerten-Allgemeines
         this.showvalues = new Array();
     }
     return Values;

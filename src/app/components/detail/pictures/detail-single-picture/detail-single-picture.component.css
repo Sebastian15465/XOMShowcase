@@ -47,16 +47,19 @@
     font-weight: bold;
     z-index: 99;
 }
+
 @media (max-width: 1380px) {
     .close {
         right: -120%;
     }
 }
+
 @media (max-width: 1260px) {
     .close {
         right: -110%;
     }
 }
+
 @media (max-width: 1199px) {
     .close {
         right: -130%;
@@ -77,13 +80,11 @@
 
 @media (max-width: 814px) {
     .close {
-        right:0%;
+        right: 0%;
     }
 }
 
-
-#myRow1
-{
+.myRow1 {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 3px;
@@ -155,7 +156,6 @@ img.demo {
 .demo:hover {
     opacity: 1;
 }
-
 
 img.hover-shadow {
     transition: 0.3s;

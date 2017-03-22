@@ -12,30 +12,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by sebastian.seelig on 15.02.2017.
  */
 var core_1 = require('@angular/core');
-var resttest_service_1 = require("../../../../resttest.service");
+var rest_service_1 = require("../../../../rest.service");
 var router_1 = require('@angular/router');
 require('rxjs/add/operator/switchMap');
 var DetailSinglePictureComponent = (function () {
     function DetailSinglePictureComponent(restService, router1) {
-        this.activePictureUrl = "";
-        this.restService = restService;
-        this.router = router1;
+        this.activePictureUrl = ""; // String Property für das gerade groß geschaltete Bild, als Url.
+        this.restService = restService; // Zuweisung des RestServices.
+        this.router = router1; // Zuweisung des Routers.
     }
     DetailSinglePictureComponent.prototype.ngOnInit = function () {
-        this.pictureUrls = this.restService.getShowcaseArtikelbildURLByValueId(this.assetValues);
-        this.showModal = false;
-        this.setActivePicture(this.pictureUrls[0] ? this.pictureUrls[0] : "");
+        this.pictureUrls = this.restService.getShowcaseArtikelbildURLByValue(this.assetValues); // Hole die Bild-Urls vom Restservice.
+        this.showModal = false; // Setzte showModal auf Unwahr.
+        this.setActivePicture(this.pictureUrls[0] ? this.pictureUrls[0] : ""); // Wenn es ein erstes Element in dem Array gibt, dann benutze die erste Url als Parameter für die
+        // Funktion setActivePicture. Ansonsten übergebe den Parameter "".
     };
+    /**
+     * setter der aktiven Url.
+     * @param url
+     */
     DetailSinglePictureComponent.prototype.setActivePicture = function (url) {
         this.activePictureUrl = url;
     };
+    /**
+     * Setze die Url auf /detail + product.id.
+     * @param product
+     */
     DetailSinglePictureComponent.prototype.redirectToDetail = function (product) {
         this.router.navigate(["/detail", product.id]);
     };
+    /**
+     * Öffne Modal mit dem übergebenen Parameter als erstes angezeigtes Bild.
+     * @param activePicUrl
+     */
     DetailSinglePictureComponent.prototype.openModal = function (activePicUrl) {
         this.showModal = true;
         this.activePictureUrl = activePicUrl;
     };
+    /**
+     * Schließe Modal
+     */
     DetailSinglePictureComponent.prototype.closeModal = function () {
         this.showModal = false;
     };
@@ -50,7 +66,7 @@ var DetailSinglePictureComponent = (function () {
             styleUrls: ['detail-single-picture.component.css'],
             templateUrl: 'detail-single-picture.component.html'
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router])
+        __metadata('design:paramtypes', [rest_service_1.RestService, router_1.Router])
     ], DetailSinglePictureComponent);
     return DetailSinglePictureComponent;
 }());

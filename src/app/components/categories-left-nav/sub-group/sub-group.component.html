@@ -1,19 +1,30 @@
-<ul class="myul" style="display: block;" *ngIf="productgroup">
-    <li>
+<ul class="myul" style="display: block;" *ngIf="productgroup">                                            <!-- Da productgroup asynchron zugewiesen wird hier abgefragt ob sie schon da ist. Die innenliegenden -->
+    <li>                                                                                      <!-- DOM-Elemente werden nur angezeigt, wenn productgroup ungleich null ist. -->
 
-        <a  (click)="toggleSelect()">
-                            <span *ngIf="productgroup.productgroups.length > 0" class="size-11 text-muted pull-right">
+
+        <!-- Bei Klick auf das Element => führe Funktion toggleSelect() aus. -->
+        <!-- Wenn die geladene Produktgruppe Kinder-Produktgruppen besitzt, dann ... -->
+        <!-- Zeige die länge des Kinder-Produktgruppen-Arrays an. -->
+        <a (click)="toggleSelect()">
+            <span *ngIf="productgroup.productgroups.length > 0" class="size-11 text-muted pull-right">
                                 ({{productgroup.productgroups.length}})
                             </span>
 
-            {{ productgroup.name != null ? productgroup.name : "Kein Name für die Produktgruppe: ID = " + productgroup.id + " fuer locale = " + restService.languageSelected + " gepflegt"}}
+
+            <!-- Wenn der Produktgruppenname ungleich null ist, dann zeige den Namen an. Ansonsten -->
+            <!-- zeige den String an. -->
+            {{ productgroup.name != null ? productgroup.name : "Kein Name für die Produktgruppe: ID = " +
+            productgroup.id + " fuer locale = " + languageSelected + " gepflegt"}}
 
 
         </a>
+
+        <!-- Wenn es Kinder-Produktgruppen gibt und dieses Element ausgewählt wurde, dann baue  -->
+        <!-- noch ein sub-group Element, mit den Kindern als Input, auf. -->
         <div *ngIf="productgroup.productgroups && isSelected">
             <categories-left-nav-sub-group
-                                           *ngFor="let productgroupItem of productgroup.productgroups"
-                                           [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
+            *ngFor="let productgroupItem of productgroup.productgroups"
+            [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
         </div>
     </li>
 

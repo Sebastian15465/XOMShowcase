@@ -1,16 +1,11 @@
-import {NgModule}      from '@angular/core';
+import {NgModule}      from '@angular/core';                                                                                        // Importe - Pfade der Module/Komponente
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule}   from '@angular/forms';
 import {HttpModule, JsonpModule}   from '@angular/http';
 
 import {AppComponent}  from './app.component';
-import {RestService} from "./resttest.service";
-/*
- import {InMemoryDataService} from "./in-memory-data.service";
- */
-import {InMemoryWebApiModule} from "angular-in-memory-web-api";
+import {RestService} from "./rest.service";
 
-import {SlideTopComponent} from "./components/slide-top/slide-top.component";
 import {TopBarComponent} from "./components/top-bar/top-bar";
 import {HeaderComponent} from "./components/header/header.component";
 import {FeaturedProductsComponent} from "./components/featured-products/featured-products.component";
@@ -35,18 +30,17 @@ import {SingleSearchResultComponent} from "./components/search-results/single-se
 import {stringLanguageConstants} from "./stringLanguageConstants";
 
 
-@NgModule({
+@NgModule({                                 // Modul decorator
     imports: [
-        BrowserModule,
+        BrowserModule,                      // Bezeichnungen der verwendeten Module
         FormsModule,
         HttpModule,
         JsonpModule,
         AppRoutingModule
-        /*InMemoryWebApiModule.forRoot(InMemoryDataService),*/
+
     ],
-    declarations: [
+    declarations: [                                     // Komponente die benutzt werden.
         AppComponent,
-        SlideTopComponent,
         TopBarComponent,
         HeaderComponent,
         FeaturedProductsComponent,
@@ -69,8 +63,8 @@ import {stringLanguageConstants} from "./stringLanguageConstants";
 
 
     ],
-    bootstrap: [AppComponent],
-    providers: [RestService, RestSearchService, stringLanguageConstants]
+    bootstrap: [AppComponent],                                                          // Bootstrap root
+    providers: [RestService, RestSearchService, stringLanguageConstants]                // Injectables
 })
 export class AppModule
 {

@@ -11,6 +11,7 @@ export class stringLanguageConstants
     public welcome = {"de":"Willkommen!", "en":"Welcome!"};
     public welcomeText = {"de":"Willkommen auf dem XOM-Showcase.","en":"Welcome to the XOM-Showcase."};
     public noProducts = {"de":"Hier gibt es keine Produkte.","en":"No products in this group."};
+    public search = {"de":"Suche", "en":"Search"};
 
 
 }

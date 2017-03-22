@@ -8,9 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/**
- * Created by sebastian.seelig on 09.02.2017.
- */
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var featured_products_component_1 = require('./components/featured-products/featured-products.component');
@@ -20,10 +17,14 @@ var search_results_component_1 = require("./components/search-results/search-res
 var routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
     { path: 'welcome', component: welcome_component_1.WelcomeComponent },
+    // <router-outlet></router-outlet> befindet.
     { path: 'classification/:id', component: featured_products_component_1.FeaturedProductsComponent },
+    // das <router-outlet></router-outlet> befindet.
     { path: 'productgroup/:id', component: featured_products_component_1.FeaturedProductsComponent },
+    // das <router-outlet></router-outlet> befindet.
     { path: 'detail/:id', component: detail_component_1.DetailComponent },
-    { path: 'search', component: search_results_component_1.SearchResultsComponent }
+    // das <router-outlet></router-outlet> befindet.
+    { path: 'search', component: search_results_component_1.SearchResultsComponent } // Wenn der Pfad detail ist, dann lade den DetailComponent an der stelle an der sich
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

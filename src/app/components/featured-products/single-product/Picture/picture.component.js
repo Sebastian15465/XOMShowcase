@@ -8,24 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/**
- * Created by sebastian.seelig on 02.03.2017.
- */
-/**
- * Created by sebastian.seelig on 15.02.2017.
- */
 var core_1 = require('@angular/core');
-var resttest_service_1 = require("../../../../resttest.service");
+var rest_service_1 = require("../../../../rest.service");
 var router_1 = require('@angular/router');
 require('rxjs/add/operator/mergeMap');
 var PictureComponent = (function () {
     function PictureComponent(restService, router1) {
-        this.restService = restService;
-        this.router = router1;
+        this.restService = restService; // Zuweisung RestService
+        this.router = router1; // Zuweisung Router
     }
     PictureComponent.prototype.ngOnInit = function () {
-        this.pictureUrls = this.restService.getShowcaseArtikelbildURLByValueId(this.assetValues);
+        // Hole die Bilder Urls vom RestService.
+        this.pictureUrls = this.restService.getShowcaseArtikelbildURLByValue(this.assetValues);
     };
+    /**
+     * Setze Url auf /detail mit id=product.id
+     * @param product
+     */
     PictureComponent.prototype.redirectToDetail = function (product) {
         this.router.navigate(["/detail", product.id]);
     };
@@ -37,9 +36,9 @@ var PictureComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'picture-component',
-            templateUrl: 'picture.component.html'
+            templateUrl: 'picture.component.html' // Pfad des Html-Templates.
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router])
+        __metadata('design:paramtypes', [rest_service_1.RestService, router_1.Router])
     ], PictureComponent);
     return PictureComponent;
 }());

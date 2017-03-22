@@ -2,26 +2,32 @@
  * Created by sebastian.seelig on 22.02.2017.
  */
 
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {stringLanguageConstants} from "../../stringLanguageConstants";
-import {RestService} from "../../resttest.service";
+import {RestService} from "../../rest.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'welcome-c',
-    templateUrl: './welcome.component.html'
+    selector: 'welcome-c',                              // selector => <welcome-c></welcome-c>
+    templateUrl: './welcome.component.html'             // Pfad zum Html-Template.
 })
 
 
-export class WelcomeComponent
+export class WelcomeComponent implements OnInit
 {
-    private strings: stringLanguageConstants;
-    private restService: RestService;
 
-    constructor(strings: stringLanguageConstants, restservice: RestService)
+    private strings: stringLanguageConstants;                   // Property für die Sprachstrings
+    private restService: RestService;                           // Property für den RestService
+    private languageSelected: string;                           // Property für dei aktuelle Sprache
+
+    constructor(strings: stringLanguageConstants, restservice: RestService)         // DI
     {
-        this.strings = strings;
-        this.restService = restservice;
+        this.strings = strings;                                              // Zuweisung languageStrings
+        this.restService = restservice;                                      // Zuweisung RestService
+    }
 
+    ngOnInit(): void
+    {
+        this.restService.languageTerms.subscribe((value : string) => this.languageSelected = value);        // Subscription an den languageTerms, um immer die aktuelle Sprache lokal zu Verfügung zu haben.
     }
 }

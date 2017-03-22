@@ -1,7 +1,7 @@
 /**
  * Created by sebastian.seelig on 16.02.2017.
  */
-import {externalIDsClass} from "./externalIDsClass";
+import {externalIDsClass} from "./externalIDs";
 import {Productgroup} from "./Productgroup";
 
 export class Classification

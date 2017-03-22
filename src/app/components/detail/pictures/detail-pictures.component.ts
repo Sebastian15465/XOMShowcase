@@ -2,7 +2,7 @@
  * Created by sebastian.seelig on 15.02.2017.
  */
 import {Component, OnInit, Input} from '@angular/core';
-import {RestService} from "../../../resttest.service";
+import {RestService} from "../../../rest.service";
 import {Product} from "../../../Product";
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Location}                 from '@angular/common';
@@ -14,25 +14,25 @@ import {Response} from "@angular/http";
 
 @Component({
     moduleId: module.id,
-    selector: 'detailPictures-component',
-    templateUrl: 'detail-pictures.component.html'
+    selector: 'detailPictures-component',                       // selector => <detailPictures-component [product]="product1"></detailPictures-component>
+    templateUrl: 'detail-pictures.component.html'               // Pfad zu dem Html-Template.
 })
 export class DetailPicturesComponent
 {
     @Input()
-    public product: Product;
+    public product: Product;                                // Input - Property Product
 
-    private restService: RestService;
-    private router: Router;
-    private showcase_artikelBildValues: Values[];
-    private location: Location;
+    private restService: RestService;                       // Property für den RestService
+    private router: Router;                                 // Property für den Router.
+    private showcase_artikelBildValues: Values[];           // Property für die showcase Artikelbild Values
+    private location: Location;                             // Property um auf Browser-Funktionealitäten zuzugreifen zu können.
 
 
-    constructor(restService: RestService, router1: Router, location: Location)
+    constructor(restService: RestService, router1: Router, location: Location)   // DI
     {
-        this.restService = restService;
-        this.router = router1;
-        this.location = location;
+        this.restService = restService;         // setzen vom restService.
+        this.router = router1;                  // setzen vom Router.
+        this.location = location;               // letzen von der Location
 
     }
 
@@ -45,6 +45,9 @@ export class DetailPicturesComponent
     }
 
 
+    /**
+     * Funktion die die showcase Artikelbid Values vom restService anfordert und in die Property schreibt, wenn sie angekommen sind.
+     */
     getArtikelbild()
     {
         var me = this;
@@ -54,11 +57,18 @@ export class DetailPicturesComponent
 
     }
 
+    /**
+     * Rufe Url /detail mit id=product.id auf.
+     * @param product
+     */
     redirectToDetail(product: Product): void
     {
         this.router.navigate(["/detail", product.id]);
     }
 
+    /**
+     * Browser Zurück Funktion
+     */
     goBack(): void {
         this.location.back();
     }

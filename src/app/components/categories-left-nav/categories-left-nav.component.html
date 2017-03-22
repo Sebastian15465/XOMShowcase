@@ -1,28 +1,40 @@
 <div class="side-nav margin-bottom-60">
 
-    <div class="side-nav-head">
-        <button class="fa fa-bars" (click)="menuToggleWhenSmallScreen()"></button>
-        <h4>{{strings.classifications[restService.languageSelected]}}</h4>
+    <div class="side-nav-head">                                                                         <!--Button wird nur bei kleiner Bildschirmbreite angezeigt.-->
+        <button class="fa fa-bars" (click)="menuToggleWhenSmallScreen()"></button>                      <!--click-Event löst das aufklappen aus.-->
+        <h4>{{strings.classifications[languageSelected]}}</h4>                                           <!--"Klassifikation" oder "Classification"-->
     </div>
-    <div (window:resize)="onResize($event)">
-        <ul *ngIf="toggle" class="list-group list-group-bordered list-group-noicon uppercase">
-            <li *ngFor="let classification of classifications" class="list-group-item">
+
+    <div (window:resize)="onResize($event)">                                                                              <!--löst das resize event aus und gebt es an die Funktion OnResize() weiter.-->
+        <ul *ngIf="toggle" class="list-group list-group-bordered list-group-noicon uppercase">                            <!--wenn toggle == true, dann ... . Bootstrap Klassen aus dem Template.-->
+            <li *ngFor="let classification of classificationsObs | async" class="list-group-item">                        <!--Für jede Klassifikation in dem Klassifikations-Array Observable ... . Bei Observables-->
+                                                                                                                          <!--muss die async pipe ( | async ) gesetzt werden, wenn man die im HTML Template-->
+                                                                                                                          <!--benutzen will.-->
+
+
+                <!--setze im HTML-Tag die Klasse auf active, wenn die Klassifikation aufgewählt wurde-->
+                <!--(glow Effekt).-->
+                <!-- bei Klick auf das HTML-Element wird die Funktion aufgerufen.-->
+                <!--Wenn classification.name ungleich null, dann zeige den Namen an und wenn nicht,-->
+                <!--dann zeige den String an.-->
                 <a [class.active]="classification === selectedClassification"
-                   (click)="onSelect(classification)"
-                   class="dropdown-toggle"
+                (click)="onSelect(classification)"
+                class="dropdown-toggle"
                 >{{classification.name != null ? classification.name : "Kein Name für die Klassifikation: ID = " +
-                    classification.id + " fuer locale = " + languageSelected + " gepflegt"}}</a>
+                classification.id + " fuer locale = " + languageSelected + " gepflegt"}}</a>
                 <!-- toggle component -->
-                <div *ngIf="selectedClassification === classification">
-                    <div *ngFor="let productgroupItem of selectedClassification.productgroups">
+
+                <div *ngIf="selectedClassification === classification">                                               <!--Wenn Klassifikation gleich der ausgewählten Klassifikation ist, dann ...-->
+                    <div *ngFor="let productgroupItem of selectedClassification.productgroups">                       <!--Für jede Produktgruppe in dem Produktgruppen-Array der ausgewählten Klassifikation ... .-->
                         <categories-left-nav-sub-group
-                                [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
+                        [productgroupId]="productgroupItem.id">                                                        <!--Baue ein categories-left-nav.component mit dem Input Produktgruppen-ID.-->
+
+                        </categories-left-nav-sub-group>
                     </div>
                 </div>
             </li>
 
         </ul>
+
     </div>
 </div>
-
-

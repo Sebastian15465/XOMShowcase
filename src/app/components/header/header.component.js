@@ -12,24 +12,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by sebastian.seelig on 15.02.2017.
  */
 var core_1 = require('@angular/core');
-var resttest_service_1 = require("../../resttest.service");
+var rest_service_1 = require("../../rest.service");
 var router_1 = require("@angular/router");
 var HeaderComponent = (function () {
     function HeaderComponent(router, restsevice) {
-        this.router = router;
-        this.restservice = restsevice;
+        this.router = router; // Zuweisung Router
+        this.restService = restsevice; // Zuweisung RstService
     }
     HeaderComponent.prototype.ngOnInit = function () {
-        this.languageSelected = this.restservice.languageSelected;
+        var _this = this;
+        this.restService.languageTerms.subscribe(function (value) { return _this.languageSelected = value; }); // Subscription an den languageTerms, um immer die aktuelle Sprache lokal zur Verfügung haben.
     };
+    /**
+     * Setze Sprache. "de" und "en" erlaubt.
+     * @param language
+     */
     HeaderComponent.prototype.setLanguage = function (language) {
-        this.restservice.languageSelected = language;
-        this.languageSelected = this.restservice.languageSelected;
+        this.restService.changeLanguage(language);
     };
+    /**
+     * setzt Url auf /search
+     */
     HeaderComponent.prototype.goToSearch = function () {
         var link = ['/search'];
         this.router.navigate(link);
     };
+    /**
+     * setzt Url auf /welcome
+     */
     HeaderComponent.prototype.goToWelcome = function () {
         var link = ['/welcome'];
         this.router.navigate(link);
@@ -38,9 +48,9 @@ var HeaderComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'header-component',
-            templateUrl: 'header.component.html'
+            templateUrl: 'header.component.html' // Pfad zum Html-Template
         }), 
-        __metadata('design:paramtypes', [router_1.Router, resttest_service_1.RestService])
+        __metadata('design:paramtypes', [router_1.Router, rest_service_1.RestService])
     ], HeaderComponent);
     return HeaderComponent;
 }());

@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by sebastian.seelig on 15.02.2017.
  */
 var core_1 = require('@angular/core');
-var resttest_service_1 = require("../../../resttest.service");
+var rest_service_1 = require("../../../rest.service");
 var Product_1 = require("../../../Product");
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
@@ -27,28 +27,43 @@ var DetailInformationComponent = (function () {
     DetailInformationComponent.prototype.ngOnInit = function () {
         this.getInformations();
     };
+    /**
+     * Auswahl der Funktionen die angestoßen werden sollen.
+     */
     DetailInformationComponent.prototype.getInformations = function () {
         this.getArtikelListenpreis();
         this.getArtikelkurztext();
         this.getArtikelbild();
-        this.getArtikelBeschreiung();
+        this.getArtikelBeschreibung();
     };
+    /**
+     * Hole Artikellistenpreis Values vom RestService
+     */
     DetailInformationComponent.prototype.getArtikelListenpreis = function () {
         var me = this;
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelListenpreisValues = values; });
     };
+    /**
+     * Hole Artikelbild Values vom RestService
+     */
     DetailInformationComponent.prototype.getArtikelbild = function () {
         var me = this;
         this.restService.getShowcaseArtikelbildValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelBildValues = values; });
     };
+    /**
+     * Hole Artikelkurztext Values von RestService
+     */
     DetailInformationComponent.prototype.getArtikelkurztext = function () {
         var me = this;
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelKurztextValues = values; });
     };
-    DetailInformationComponent.prototype.getArtikelBeschreiung = function () {
+    /**
+     * Hole Artikelbeschreibung von RestService
+     */
+    DetailInformationComponent.prototype.getArtikelBeschreibung = function () {
         var me = this;
         this.restService.getShowcaseArtikelbeschreibungsValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelBeschreibungValues = values; });
@@ -65,6 +80,9 @@ var DetailInformationComponent = (function () {
         this.restService.getShowcaseArtikelPreisValueByProductId(me.product.id)
             .then(function (values) { return me.showcase_artikelAktionsPreisValues = values; });
     };
+    /**
+     * Browser zurück Funktionalität.
+     */
     DetailInformationComponent.prototype.goBack = function () {
         this.location.back();
     };
@@ -76,9 +94,9 @@ var DetailInformationComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'detailInformation-component',
-            templateUrl: 'detail-information.component.html'
+            templateUrl: 'detail-information.component.html' // Pfad zum HTML-Template.
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router, router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [rest_service_1.RestService, router_1.Router, router_1.ActivatedRoute, common_1.Location])
     ], DetailInformationComponent);
     return DetailInformationComponent;
 }());

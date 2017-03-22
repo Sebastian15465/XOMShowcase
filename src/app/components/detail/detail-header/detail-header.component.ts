@@ -2,7 +2,7 @@
  * Created by sebastian.seelig on 15.02.2017.
  */
 import {Component, OnInit, Input} from '@angular/core';
-import {RestService} from "../../../resttest.service";
+import {RestService} from "../../../rest.service";
 import {Product} from "../../../Product";
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Location}                 from '@angular/common';
@@ -19,28 +19,32 @@ import {Response} from "@angular/http";
 })
 export class DetailHeaderComponent
 {
-    @Input()
-    public product: Product;
+    @Input()                                                    // Input decorator - gibt an, dass das Product ein Input ist.
+    public product: Product;                                    // Input
 
-    private restService: RestService;
-    private showcase_artikelKurztextValues: Values[];
+    private restService: RestService;                           // RestService
+    private showcase_artikelKurztextValues: Values[];           // Property um auf den Titel zuzugreifen.
 
 
-    constructor(restService: RestService,)
+    constructor(restService: RestService,)                  // DI
     {
-        this.restService = restService;
+        this.restService = restService;                 // zuweisung des RestServices.
 
     }
 
     ngOnInit(): void
     {
 
-        this.getArtikelkurztext();
+        this.getArtikelkurztext();              // führe Funktion getArtikelkurztext() aus.
 
     }
 
 
-    getArtikelkurztext()
+    /**
+     * benutzt die Funktion vom RestService um sich die ArtikelKurztext-Values zu holen und
+     * weist sie dem Property zu.
+     */
+    getArtikelkurztext() : void
     {
         var me = this;
 

@@ -2,7 +2,7 @@
  * Created by sebastian.seelig on 15.02.2017.
  */
 import {Component, OnInit} from '@angular/core';
-import {RestService} from "../../resttest.service";
+import {RestService} from "../../rest.service";
 import {Product} from "../../Product";
 
 

@@ -15,18 +15,30 @@ var core_1 = require('@angular/core');
 require('rxjs/add/operator/switchMap');
 var ModalComponent = (function () {
     function ModalComponent() {
-        this.slideIndex = 1;
+        this.slideIndex = 1; // Index für die Slides.
     }
     ModalComponent.prototype.ngOnInit = function () {
-        this.slideIndex = this.pictureUrls.indexOf(this.withActivatedPictureUrl);
-        this.activePictureUrl = this.pictureUrls[this.slideIndex];
+        this.slideIndex = this.pictureUrls.indexOf(this.withActivatedPictureUrl); // Zuweisung des Indexes vom 2. Input
+        this.activePictureUrl = this.pictureUrls[this.slideIndex]; // Zuweisung der Url des 2. Inputs.
     };
+    /**
+     * Funktion für die nächstes- und vorheriges Bild-Buttons
+     * @param n
+     */
     ModalComponent.prototype.plusSlides = function (n) {
         this.showSlides(this.slideIndex += n);
     };
+    /**
+     * Funktion zum setzen der aktiven Bild-Url durch klicken auf die kleinen Preview Bilder.
+     * @param n
+     */
     ModalComponent.prototype.currentSlide = function (n) {
         this.activePictureUrl = n;
     };
+    /**
+     * Funktion für die nächstes- und vorheriges Bild-Buttons mit Modulo-Operator um eine OutOfBounds Exception zu vermeiden.
+     * @param n
+     */
     ModalComponent.prototype.showSlides = function (n) {
         this.activePictureUrl = this.pictureUrls[n % this.pictureUrls.length];
     };
@@ -35,6 +47,7 @@ var ModalComponent = (function () {
         __metadata('design:type', Array)
     ], ModalComponent.prototype, "pictureUrls", void 0);
     __decorate([
+        // Input Array von Bilder URLs
         core_1.Input(), 
         __metadata('design:type', String)
     ], ModalComponent.prototype, "withActivatedPictureUrl", void 0);

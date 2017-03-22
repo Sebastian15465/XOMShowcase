@@ -16,7 +16,8 @@ var AppComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'my-app',
-            templateUrl: './app.component.html'
+            // Aus index.html: <my-app>Loading AppComponent content here ...</my-app>
+            templateUrl: './app.component.html' // Pfad des HTML Templates
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

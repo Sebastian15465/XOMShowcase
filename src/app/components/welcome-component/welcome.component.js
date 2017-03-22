@@ -13,19 +13,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var stringLanguageConstants_1 = require("../../stringLanguageConstants");
-var resttest_service_1 = require("../../resttest.service");
+var rest_service_1 = require("../../rest.service");
 var WelcomeComponent = (function () {
     function WelcomeComponent(strings, restservice) {
-        this.strings = strings;
-        this.restService = restservice;
+        this.strings = strings; // Zuweisung languageStrings
+        this.restService = restservice; // Zuweisung RestService
     }
+    WelcomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.restService.languageTerms.subscribe(function (value) { return _this.languageSelected = value; }); // Subscription an den languageTerms, um immer die aktuelle Sprache lokal zu Verfügung zu haben.
+    };
     WelcomeComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'welcome-c',
-            templateUrl: './welcome.component.html'
+            templateUrl: './welcome.component.html' // Pfad zum Html-Template.
         }), 
-        __metadata('design:paramtypes', [stringLanguageConstants_1.stringLanguageConstants, resttest_service_1.RestService])
+        __metadata('design:paramtypes', [stringLanguageConstants_1.stringLanguageConstants, rest_service_1.RestService])
     ], WelcomeComponent);
     return WelcomeComponent;
 }());

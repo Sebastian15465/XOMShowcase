@@ -1,5 +1,10 @@
-<div class="jumbotron">
-    <h1>{{strings.welcome[restService.languageSelected]}}</h1>
-    <p>{{strings.welcomeText[restService.languageSelected]}}</p>
+<!-- Wenn die Property initialisiert ist, dann zeige dei Elemente an. -->
+<div class="jumbotron" *ngIf="languageSelected">
+
+    <!-- String: "Willkommen! oder "Welcome! -->
+    <h1>{{strings.welcome[languageSelected]}}</h1>
+
+    <!-- String: "Willkommen auf dem XOM-Showcase." oder "Welcome to the XOM-Showcase." -->
+    <p>{{strings.welcomeText[languageSelected]}}</p>
 
 </div>

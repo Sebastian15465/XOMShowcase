@@ -1,11 +1,15 @@
 <!-- SEARCH HEADER -->
 <div class="search-box over-header">
 
-    <input #searchBox id="search-box"  (keyup)="search(searchBox.value)" placeholder="SEARCH"/>
+    <!-- Bei Keyup-Event führe Funktion mit aktuellen Input aus. Placeholder ist "Suche" oder "Search". -->
+    <input #searchBox id="search-box"  (keyup)="search(searchBox.value)" [placeholder]="strings.search[languageSelected]" style="width: 95%"/>
+
+    <!-- X-Button Zum Löschen der Eingabe -->
     <a id="clearSearch" style="color: #337ab7 !important;" (click)="searchBox.value = ''" class="glyphicon glyphicon-remove"></a>
 </div>
 <!-- /SEARCH HEADER -->
 
+<!-- Für jedes gefundene Produkt baue eine single-search-result Komponente auf.  -->
 <div *ngIf="products">
     <div *ngFor="let item of products | async">
         <single-search-result [product]="item"></single-search-result>

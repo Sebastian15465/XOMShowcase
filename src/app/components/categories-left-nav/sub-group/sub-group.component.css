@@ -3,9 +3,10 @@
     padding-left: 12%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) {         /*Wenn Bildschirm kleiner als 767px, dann ...*/
     div.side-nav ul {
-        display: block;
+        display: block;             /*Bootstrap benutzt hier display : none und display : block. Kommt aus dem Template. In dieser App benutze ich die *ngIf="" Syntax um DOM-Elemente anzuzeigen*/
+                                    /*bzw. zu verstecken. Da ich die Bootstap-Design-Klassen jedoch weiter benutzen will habe ich hier die CSS definiert um die Bootstrap-CSS zu überschreiben.*/
         overflow-y: auto;
 
     }

@@ -12,16 +12,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by sebastian.seelig on 15.02.2017.
  */
 var core_1 = require('@angular/core');
-var resttest_service_1 = require("../../../resttest.service");
+var rest_service_1 = require("../../../rest.service");
 var Product_1 = require("../../../Product");
 require('rxjs/add/operator/switchMap');
 var DetailHeaderComponent = (function () {
     function DetailHeaderComponent(restService) {
-        this.restService = restService;
+        this.restService = restService; // zuweisung des RestServices.
     }
     DetailHeaderComponent.prototype.ngOnInit = function () {
-        this.getArtikelkurztext();
+        this.getArtikelkurztext(); // führe Funktion getArtikelkurztext() aus.
     };
+    /**
+     * benutzt die Funktion vom RestService um sich die ArtikelKurztext-Values zu holen und
+     * weist sie dem Property zu.
+     */
     DetailHeaderComponent.prototype.getArtikelkurztext = function () {
         var me = this;
         this.restService.getShowcaseArtikelkurztextValueByProductId(me.product.id)
@@ -37,7 +41,7 @@ var DetailHeaderComponent = (function () {
             selector: 'detail-header-component',
             templateUrl: 'detail-header.component.html'
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService])
+        __metadata('design:paramtypes', [rest_service_1.RestService])
     ], DetailHeaderComponent);
     return DetailHeaderComponent;
 }());

@@ -8,37 +8,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/**
- * Created by sebastian.seelig on 15.02.2017.
- */
-var core_1 = require('@angular/core');
-var resttest_service_1 = require("../../../resttest.service");
+var core_1 = require('@angular/core'); // Importe
+var rest_service_1 = require("../../../rest.service");
 var router_1 = require("@angular/router");
 var SubGroupComponent = (function () {
+    // BehaviorSubject vom restService.
     function SubGroupComponent(restService, router) {
-        this.isDataAvailable = false;
-        this.isSelected = false;
-        this.restService = restService;
-        this.router = router;
+        this.isDataAvailable = false; // Deklaration und Initialisierung eines Boolean Propertys.
+        this.isSelected = false; // Deklaration und Initialisierung eines Boolean Propertys.
+        this.restService = restService; // Zuweisen des Restservices.
+        this.router = router; // Zuweisen des Routers.
     }
     SubGroupComponent.prototype.ngOnInit = function () {
-        this.getNextProductgroup();
+        var _this = this;
+        this.getNextProductgroup(); // führe die Funktion getNextProductgroup() aus.
+        this.restService.languageTerms.subscribe(function (value) { return _this.languageSelected = value; }); // Subscribe an den restService.languageTerms.
     };
+    /**
+     * Funktion getNextProductgroup() -> returnt nichts.
+     */
     SubGroupComponent.prototype.getNextProductgroup = function () {
-        var me = this;
-        this.restService.getProductGroupWithExtendedProductgroups(this.productgroupId).then((function (productgroup1) { return me.productgroup = productgroup1; })).then(function () {
+        var me = this; // me kann als this benutz werden.
+        this.restService.getProductGroupWithExtendedProductgroups(me.productgroupId) // Führe die Funktion getProductGroupWithExtendedProductgroups() des restServices aus. Benutze
+            .then((function (productgroup1) { return me.productgroup = productgroup1; })).then(function () {
+            // dann weise der Property productgroup die empfangenen Daten zu.
             return me.isDataAvailable = true;
-        });
+        }); // Wenn die erste Callback-Methode abgeschlossen ist, dann setze isDataAvailable auf true.
     };
+    /**
+     * Toggle zum aufklappen.
+     */
     SubGroupComponent.prototype.toggleSelect = function () {
         if (this.isSelected == false) {
-            this.isSelected = true;
-            this.router.navigate(['productgroup', this.productgroup.id]);
+            this.isSelected = true; // setze isSelected auf true.
         }
         else {
-            this.isSelected = false;
-            this.router.navigate(['productgroup', this.productgroup.id]);
+            this.isSelected = false; // setze isSelected auf Unwahr.
         }
+        this.router.navigate(['productgroup', this.productgroup.id]); // setze die URL in der Adressleiste des Browsers auf /productgroup/ID der ausgewählten Produktgruppe.
     };
     __decorate([
         core_1.Input(), 
@@ -48,10 +55,11 @@ var SubGroupComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'categories-left-nav-sub-group',
+            // => <categories-left-nav-sub-group [productgroupId]="productgroupItem.id"></categories-left-nav-sub-group>
             styleUrls: ['sub-group.component.css'],
-            templateUrl: 'sub-group.component.html'
+            templateUrl: 'sub-group.component.html' // Pfad zum HTML-Template.
         }), 
-        __metadata('design:paramtypes', [resttest_service_1.RestService, router_1.Router])
+        __metadata('design:paramtypes', [rest_service_1.RestService, router_1.Router])
     ], SubGroupComponent);
     return SubGroupComponent;
 }());

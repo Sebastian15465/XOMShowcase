@@ -17,7 +17,7 @@
 			-->
 <section class="page-header page-header-xs" style="margin-bottom: 10px !important;">
     <div class="container">
-        <h1 *ngIf="!showcase_artikelKurztextValues || !showcase_artikelKurztextValues[0]">Kein showcase_artikelkurztext - showvalue definiert!</h1>
+        <h1 *ngIf="!showcase_artikelKurztextValues || !showcase_artikelKurztextValues[0]">Kein showcase_artikelkurztext - showvalue definiert!</h1>    <!--Wenn kein Artikelkurztext vorliegt-->
         <h1 *ngIf="showcase_artikelKurztextValues && showcase_artikelKurztextValues[0]">{{showcase_artikelKurztextValues[0].value['value']}}</h1>
 
     </div>

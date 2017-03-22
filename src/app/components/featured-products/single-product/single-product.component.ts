@@ -1,11 +1,6 @@
-/**
- * Created by sebastian.seelig on 02.03.2017.
- */
-/**
- * Created by sebastian.seelig on 15.02.2017.
- */
+
 import {Component, OnInit, Input} from '@angular/core';
-import {RestService} from "../../../resttest.service";
+import {RestService} from "../../../rest.service";
 import {Product} from "../../../Product";
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/mergeMap';
@@ -15,29 +10,29 @@ import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     moduleId: module.id,
-    selector: 'single-product',
-    templateUrl: 'single-product.component.html'
+    selector: 'single-product',                                 // selector => <single-product [product]="product1"></single-product>
+    templateUrl: 'single-product.component.html'                // Pfad zum Html-Template
 })
 export class SingleProductComponent implements OnInit
 {
     @Input()
-    public product: Product;
+    public product: Product;                                    // Input product
 
-    private restService: RestService;
-    private router: Router;
-    private showcase_artikelListenpreisValues: Values[];
-    private showcase_artikelKurztextValues: Values[];
-    private showcase_artikelBildValues: Values[];
-    private showcase_artikelRatingValues: Values[];
-    private showcase_artikelAktionsPreisValues: Values[];
-    private showcase_artikelIsNewValues: Values[];
-    private showcase_artikelIsOnSaleValues: Values[];
+    private restService: RestService;                           // Property für den restService
+    private router: Router;                                     // Property für den Router
+    private showcase_artikelListenpreisValues: Values[];        // Property für die showcase_artikelListenpreisValues
+    private showcase_artikelKurztextValues: Values[];           // Property für die showcase_artikelKurztextValues
+    private showcase_artikelBildValues: Values[];               // Property für die showcase_artikelBildValues
+    private showcase_artikelRatingValues: Values[];             // Property für die showcase_artikelRatingValues
+    private showcase_artikelAktionsPreisValues: Values[];       // Property für die showcase_artikelAktionsPreisValues
+    private showcase_artikelIsNewValues: Values[];              // Property für die showcase_artikelIsNewValues  TODO
+    private showcase_artikelIsOnSaleValues: Values[];           // Property für die showcase_artikelIsOnSaleValues TODO
 
 
-    constructor(restService: RestService, router1: Router)
+    constructor(restService: RestService, router1: Router)          // DI
     {
-        this.restService = restService;
-        this.router = router1;
+        this.restService = restService;                 // Zuweisung RestService
+        this.router = router1;                          // Zuweisung Router
 
 
     }
@@ -48,12 +43,17 @@ export class SingleProductComponent implements OnInit
 
     }
 
-
+    /**
+     * Setze Url auf /detail mit id=product.id
+     */
     redirectToDetail(): void
     {
         this.router.navigate(["/detail", this.product.id]);
     }
 
+    /**
+     * führe Funktionen aus.
+     */
     getInformations(): void
     {
         this.getArtikelListenpreis();
@@ -63,6 +63,9 @@ export class SingleProductComponent implements OnInit
 
     }
 
+    /**
+     * Hole Artikellistenpreis vom RestService
+     */
     getArtikelListenpreis(): void
     {
         var me = this;
@@ -72,6 +75,9 @@ export class SingleProductComponent implements OnInit
 
     }
 
+    /**
+     * Hole Artikelbilder vom restService
+     */
     getArtikelbild()
     {
         var me = this;
@@ -81,6 +87,9 @@ export class SingleProductComponent implements OnInit
 
     }
 
+    /**
+     * Hole ArtikelKurztext vom restService
+     */
     getArtikelurztext()
     {
         var me = this;

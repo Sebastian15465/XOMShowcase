@@ -1,49 +1,45 @@
+
+
+<!-- Wenn das product und showshowcase_artikelListenpreisValues geladen wurden, dann zeige dieses Element an. -->
 <div *ngIf="product && showcase_artikelListenpreisValues" class="shop-item">
 
     <div class="thumbnail">
         <!-- product image(s) -->
+        <!-- Wenn auf den Link geklickt wird, dann benutze Funktion redirectToDetail. -->
         <a class="shop-item-image" (click)="redirectToDetail()">
+            <!-- lade ein <picture-component>, wenn die showcase_artikelBildValues angekommen sind. Benutze showcase_artikelBildValues als Input für den Komponenten -->
             <picture-component *ngIf="showcase_artikelBildValues" [assetValues]="showcase_artikelBildValues"></picture-component>
         </a>
         <!-- /product image(s) -->
 
-        <!-- hover buttons -->
-      <!--  <div class="shop-option-over">
-            &lt;!&ndash; replace data-item-id width the real item ID - used by js/view/demo.shop.js &ndash;&gt;
-            <a class="btn btn-default add-wishlist" href="#" data-item-id="1"
-               data-toggle="tooltip" title="" data-original-title="Add To Wishlist"><i
-                    class="fa fa-heart nopadding"></i></a>
-            <a class="btn btn-default add-compare" href="#" data-item-id="1"
-               data-toggle="tooltip" title="" data-original-title="Add To Compare"><i
-                    class="fa fa-bar-chart-o nopadding" data-toggle="tooltip"></i></a>
-            <a class="btn btn-default" href="shop-cart.html"><i
-                    class="fa fa-cart-plus size-20"></i></a>
-        </div>-->
-        <!-- /hover buttons -->
-
         <!-- product more info -->
         <div class="shop-item-info">
+            <!-- Wenn die showcase_artikelIsNewValues da sind, dann zeige New auf dem Bild an.  -->
             <span *ngIf="showcase_artikelIsNewValues" class="label label-success">NEW</span>
+            <!-- Wenn die showcase_artikelIsOnSaleValues da sind, dann zeige Sale auf dem Bild an.  -->
             <span *ngIf="showcase_artikelIsOnSaleValues" class="label label-danger">SALE</span>
         </div>
         <!-- /product more info -->
     </div>
 
     <div class="shop-item-summary text-center">
+        <!-- Wenn keine showcase_artikelKurztextValues oder es kein showcase_artikelKurztextValues[0] gibt, dann zeige dies Meldung an. -->
         <h2 *ngIf="!showcase_artikelKurztextValues || !showcase_artikelKurztextValues[0]">
             {{product.name}} <br>Kein showcase_artikelkurztext - showvalue definiert
         </h2>
+        <!-- Wenn showcase_artikelKurztextValues und showcase_artikelKurztextValues[0] geladen wurden, dann zeige den Inhalt von dem Value(Name des Produktes) an.-->
         <h2 *ngIf="showcase_artikelKurztextValues && showcase_artikelKurztextValues[0]">{{showcase_artikelKurztextValues[0]?.value['value']}}</h2>
 
-        <!-- rating -->
+        <!-- rating TODO -->
         <div *ngIf="showcase_artikelRatingValues"  class="shop-item-rating-line">
             <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
         </div>
         <!-- /rating -->
 
         <!-- price -->
+        <!-- Wenn showcase_artikelListenpreisValues geladen wurden und es  showcase_artikelListenpreisValues[0] gibt, dann Zeige den Preis und die Einheit an.-->
         <div *ngIf="showcase_artikelListenpreisValues && showcase_artikelListenpreisValues[0]" class="shop-item-price" >
-            {{showcase_artikelListenpreisValues[0]?.value['value']}} €
+            {{showcase_artikelListenpreisValues[0]?.value['value'] + " " + showcase_artikelListenpreisValues[0]?.value['unit']}}
 
         </div>
         <!-- /price -->

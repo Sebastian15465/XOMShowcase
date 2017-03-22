@@ -1,19 +1,22 @@
 
+<!-- lade <detail-header-component>, wenn product angekommen ist. Input ist das Produkt -->
 <detail-header-component *ngIf="product" [product]="product"></detail-header-component>
 
+<!-- Bottstrap row -->
 <div class="row">
 
-    <!-- IMAGE -->
+    <!-- Bootstrap Spalte -->
     <div class="col-lg-6 col-sm-6">
-
+        <!-- lade <detailPictures-component>, wenn produkt angekommen ist. Input ist das Produkt -->
        <detailPictures-component *ngIf="product" [product]="product"></detailPictures-component>
     </div>
-    <!-- /IMAGE -->
 
-    <!-- ITEM DESC -->
+
+    <!-- Bootstrap Spalte -->
     <div class="col-lg-6 col-sm-6">
+        <!-- lade <detailInformation-component>, wenn produkt angekommen ist. Input ist das Produkt -->
         <detailInformation-component *ngIf="product" [product]="product"></detailInformation-component>
     </div>
-    <!-- /ITEM DESC -->
+
 
 </div>
