@@ -11,10 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
+var rest_service_1 = require("./rest.service");
 var RestSearchService = (function () {
-    function RestSearchService(http) {
+    function RestSearchService(http, restService) {
         this.http = http;
-    } // Hier kurze Declaration und Initialisierung des Http-Properties.
+        this.restService = restService;
+        this.productUrlFromRestService = restService.getProductUrl();
+    }
     /**
      * Funktion zum suchen von Parametern in der Rest API/product. Gibt ein Observable von einem Produkt-Array wieder
      * @param term
@@ -22,12 +25,12 @@ var RestSearchService = (function () {
      */
     RestSearchService.prototype.search = function (term) {
         return this.http
-            .get("http://demo.xom.one/xom-rest/products/?locale=de&search=                     \n                @SP:pattr674489917227=*" + term + "* OR @SP:pattr5200394238715=*" + term + "*") // @SP:pattr674489917227 ist der Artikelkurztext und @SP:pattr5200394238715 ist die Artikelbeschreibung.
+            .get(this.productUrlFromRestService + "?locale=de&search=                     \n                @SP:pattr674489917227=*" + term + "* OR @SP:pattr5200394238715=*" + term + "*") // @SP:pattr674489917227 ist der Artikelkurztext und @SP:pattr5200394238715 ist die Artikelbeschreibung.
             .map(function (response) { return response.json().data; });
     };
     RestSearchService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, rest_service_1.RestService])
     ], RestSearchService);
     return RestSearchService;
 }());

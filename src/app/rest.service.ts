@@ -10,7 +10,7 @@ import {Product} from './Product'
 import {Classification} from "./Classification";
 import {Productgroup} from "./Productgroup";
 import {Values} from "./Values";
-import {Subject, BehaviorSubject} from "rxjs/Rx";
+import {BehaviorSubject} from "rxjs/Rx";
 import {Router} from "@angular/router";
 
 
@@ -55,6 +55,10 @@ export class RestService
         }
     }
 
+    public getProductUrl():string
+    {
+        return this.productUrl;
+    }
 
     /**
      * getter für das Http Property
@@ -82,7 +86,7 @@ export class RestService
      */
     getProductsFromProductgroup(Id: string): Promise<Product[]>
     {                                                                                                           // Promise(Versprechen) von einem Produkt-Array.
-        const url = `${this.productgroupUrl}${Id}${"/products"}${"?locale=" + this.languageSelectedAfter}`;     // Url für die Anfrage
+        const url = `${this.productgroupUrl}${Id}${"/products"}${"?locale=" + this.languageSelectedAfter + "&recurse=true"}`;     // Url für die Anfrage
 
         return this.http.get(url)                                                                               // http.get liefert ein Obervable. Dieses Observable wird in einen Promise
             .toPromise()                                                                                        // umgewandelt.

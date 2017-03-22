@@ -41,6 +41,9 @@ var RestService = (function () {
             this.router.navigate(link); // Zeige welcome.component an.
         }
     };
+    RestService.prototype.getProductUrl = function () {
+        return this.productUrl;
+    };
     Object.defineProperty(RestService.prototype, "http", {
         /**
          * getter für das Http Property
@@ -65,7 +68,7 @@ var RestService = (function () {
      * @returns {Promise<Product[]>}
      */
     RestService.prototype.getProductsFromProductgroup = function (Id) {
-        var url = "" + this.productgroupUrl + Id + "/products" + ("?locale=" + this.languageSelectedAfter); // Url für die Anfrage
+        var url = "" + this.productgroupUrl + Id + "/products" + ("?locale=" + this.languageSelectedAfter + "&recurse=true"); // Url für die Anfrage
         return this.http.get(url) // http.get liefert ein Obervable. Dieses Observable wird in einen Promise
             .toPromise() // umgewandelt.
             .then(function (response) { return response.json().data; }) // Wenn Antwort da ist, dann return die Antwort als Produkt-Array.
